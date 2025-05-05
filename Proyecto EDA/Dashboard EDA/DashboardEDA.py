@@ -3,7 +3,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import os
-from scipy.stats import chi2_contingency, shapiro, wilcoxon
+from scipy.stats import chi2_contingency, shapiro, wilcoxon, mannwhitneyu
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(script_dir, "stroke.csv")
@@ -52,10 +52,11 @@ for col in vars_cualitativas:
     st.dataframe(pd.DataFrame({"Frecuencia": freq, "%": percent}))
 
 st.header("3. Matriz de Correlación")
-fig_corr, ax_corr = plt.subplots()
-corr_matrix = dataset_stroke[vars_cuantitativas].corr()
-sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", ax=ax_corr)
-ax_corr.set_title("Matriz de Correlación entre Variables Numéricas")
+numeric_columns = dataset_stroke.select_dtypes(include=['float64', 'int64']).columns
+corr_matrix = dataset_stroke[numeric_columns].corr()
+fig_corr, ax_corr = plt.subplots(figsize=(12, 10))
+sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", ax=ax_corr, fmt=".2f", annot_kws={"size": 10}, cbar=True)
+ax_corr.set_title("Matriz de Correlación entre Variables")
 st.pyplot(fig_corr)
 
 st.header("4. Pruebas de Independencia Chi-Cuadrado para las variables cualitativas")
