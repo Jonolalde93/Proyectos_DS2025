@@ -1,2 +1,2 @@
 # BootcampDS_2025
-Repositorio con apuntes y codigos del Bootcamp
+Repostiorio de proyectos personales y ejercicios varios realizados
