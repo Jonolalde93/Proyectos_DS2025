@@ -3,7 +3,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import os
-from scipy.stats import chi2_contingency, shapiro, wilcoxon
+from scipy.stats import chi2_contingency, shapiro, wilcoxon, mannwhitneyu
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(script_dir, "stroke.csv")
@@ -50,12 +50,31 @@ for col in vars_cualitativas:
     freq = dataset_stroke[col].value_counts(dropna=False)
     percent = round(dataset_stroke[col].value_counts(normalize=True, dropna=False) * 100, 2)
     st.dataframe(pd.DataFrame({"Frecuencia": freq, "%": percent}))
+    
+    proporcion_stroke = pd.crosstab(dataset_stroke[col], dataset_stroke['stroke'], normalize='index')
+    if 1 in proporcion_stroke.columns:
+        fig2, ax2 = plt.subplots()
+        proporcion_stroke[1].plot(kind='bar', color='orange', ax=ax2)
+        ax2.set_title(f'Proporción de Ictus por {col}')
+        ax2.set_ylabel('Proporción de Ictus')
+        ax2.set_ylim(0, 0.2)
+        ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45)
+        for p in ax2.patches:
+            height = p.get_height()
+            ax2.annotate(f'{height:.2%}', (p.get_x() + p.get_width() / 2., height),
+                         ha='center', va='bottom', fontsize=8)
+
+        st.pyplot(fig2)
+    else:
+        st.info(f"No hay casos de ictus registrados para las categorías en {col}.")
 
 st.header("3. Matriz de Correlación")
-fig_corr, ax_corr = plt.subplots()
-corr_matrix = dataset_stroke[vars_cuantitativas].corr()
-sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", ax=ax_corr)
-ax_corr.set_title("Matriz de Correlación entre Variables Numéricas")
+columnas_numericas = dataset_stroke.select_dtypes(include=['float64', 'int64']).columns
+columnas_numericas = columnas_numericas.drop('id')
+corr_matrix = dataset_stroke[numeric_columns].corr()
+fig_corr, ax_corr = plt.subplots(figsize=(12, 10))
+sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", ax=ax_corr, fmt=".2f", annot_kws={"size": 10}, cbar=True)
+ax_corr.set_title("Matriz de Correlación entre Variables")
 st.pyplot(fig_corr)
 
 st.header("4. Pruebas de Independencia Chi-Cuadrado para las variables cualitativas")
@@ -80,4 +99,3 @@ for col in vars_cuantitativas:
     st.write("**Prueba de Wilcoxon/Mann-Whitney**")
     p_wilcoxon = mannwhitneyu(group0, group1, alternative="two-sided")[1]
     st.write(f"p-valor: {p_wilcoxon:.2e}")
-
