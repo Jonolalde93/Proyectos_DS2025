@@ -12,8 +12,8 @@ dataset_stroke = pd.read_csv(csv_path)
 
 dataset_stroke['bmi'] = dataset_stroke['bmi'].fillna(dataset_stroke['bmi'].median())
 
-st.title("Análisis de Factores asociados al ictus")
-st.markdown("Dashboard interactivo que nos permite explorar visualmente la relación de factores tanto clínicos como sociodemográficos y la aparición de accidentes cerebrovasculares.")
+st.title("Análisis de Factores asociados al Ictus")
+st.markdown("Dashboard que nos permite explorar visualmente la relación de factores tanto clínicos como sociodemográficos y la aparición de accidentes cerebrovasculares.")
 
 vars_cuantitativas = ['age','avg_glucose_level','bmi']
 vars_cualitativas = ['gender','hypertension','heart_disease','ever_married','work_type','Residence_type','smoking_status']
@@ -28,12 +28,12 @@ for col in vars_cuantitativas:
 
     st.subheader(f"Distribución de {col} por Ictus")
     fig2, ax2 = plt.subplots()
-    sns.kdeplot(data=dataset_stroke, x=col, hue="stroke", fill=True, ax=ax2)
+    sns.kdeplot(data=dataset_stroke, x=col, hue="stroke", fill=True, color='#00CCFF' ax=ax2)
     st.pyplot(fig2)
 
     st.subheader(f"Boxplot de {col} por Ictus")
     fig3, ax3 = plt.subplots()
-    sns.boxplot(data=dataset_stroke, x="stroke", y=col, ax=ax3)
+    sns.boxplot(data=dataset_stroke, x="stroke", y=col, color='#800020', ax=ax3)
     st.pyplot(fig3)
 
 st.header("2. Analisis de las variables categóricas")
