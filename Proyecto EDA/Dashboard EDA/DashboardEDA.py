@@ -71,7 +71,7 @@ for col in vars_cualitativas:
 st.header("3. Matriz de Correlación")
 columnas_numericas = dataset_stroke.select_dtypes(include=['float64', 'int64']).columns
 columnas_numericas = columnas_numericas.drop('id')
-corr_matrix = dataset_stroke[numeric_columns].corr()
+corr_matrix = dataset_stroke[columnas_numericas].corr()
 fig_corr, ax_corr = plt.subplots(figsize=(12, 10))
 sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", ax=ax_corr, fmt=".2f", annot_kws={"size": 10}, cbar=True)
 ax_corr.set_title("Matriz de Correlación entre Variables")
