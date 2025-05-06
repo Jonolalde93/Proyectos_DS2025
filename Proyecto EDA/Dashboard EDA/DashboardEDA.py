@@ -28,7 +28,7 @@ for col in vars_cuantitativas:
 
     st.subheader(f"Distribución de {col} por Ictus")
     fig2, ax2 = plt.subplots()
-    sns.kdeplot(data=dataset_stroke, x=col, hue="stroke", fill=True, color='#00CCFF' ax=ax2)
+    sns.kdeplot(data=dataset_stroke, x=col, hue="stroke", fill=True, color='#00CCFF', ax=ax2)
     st.pyplot(fig2)
 
     st.subheader(f"Boxplot de {col} por Ictus")
