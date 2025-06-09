@@ -398,7 +398,7 @@ plot_activity_interactive <- plot_activity_interactive %>%
   )
 plot_activity_interactive
 
-# Gráfico interactivo para la variable "Depresion_Status"
+# Gráfico interactivo para la variable "Depression_Status"
 
 plot_depression <- ggplot(data, aes(x = Dementia, fill = Depression_Status)) +
   geom_bar(position = "dodge", stat = "count") +
