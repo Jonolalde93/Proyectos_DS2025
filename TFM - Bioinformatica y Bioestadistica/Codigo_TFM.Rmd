@@ -1,0 +1,736 @@
+---
+title: "Anexo 3 - Código en R"
+author: "Jon Olalde Jometon"
+date: "2024-07-02"
+output:
+  word_document: default
+  html_document:
+    fig_path: "figures/"
+---
+
+```{r - Script 1 - Carga Datos y Libreria}
+# Carga de las librerías empleadas:
+
+  # Para la manipulación de datos
+  library(dplyr) 
+  # Para visualización de los datos
+  library(ggplot2) 
+  library(plotly)
+  # Para  la creacion y evaluacion del modelo predictivo
+  library(caret) 
+  # Para de curvas y evaluacion de desempeño del modelo
+  library(pROC)  
+  # Implementacion del algoritmo "Random Forest"
+  library(randomForest)
+  # Implementacion del algoritmo "Decision Tree"
+  library (rpart)
+  # Implementacion del algoritmo "SVM"
+  library(e1071)
+  # Para la prueba U de Mann-Whitney - Analisis no parametricos. 
+  library(coin) 
+
+# Carga de los datos desde un archivo CSV
+file_path <- file.choose()  # Seleccionamos el archivo CSV
+data <- read.csv(file_path)
+
+# Ver la estructura de los datos
+str(data)
+summary(data)
+```
+
+```{r - Script 2 - Preprocesamiento de los datos}
+# Definimos las variables categóricas
+categorical_vars <- c("Diabetic", "Education_Level", "Gender",
+                      "Family_History", "Smoking_Status", "APOE_ε4", 
+                      "Physical_Activity", "Depression_Status", "Medication_History", 
+                      "Nutrition_Diet", "Sleep_Quality", 
+                      "Chronic_Health_Conditions", "Dementia", "Dominant_Hand")
+
+
+data$Medication_History <- ifelse(is.na(data$Medication_History), "No", data$Medication_History) # Manejar valores faltantes en Medication_History (no es necesario)
+
+
+data <- subset(data, select = -c(Dosage.in.mg)) # Eliminamos la variable Dosage.in.mg ya que no es necesaria para el análisis
+data <- subset(data, select = -c(Prescription)) # Eliminamos la variable Prescription ya que no es necesaria para el análisis
+data <- subset(data, select = -c(Cognitive_Test_Scores)) # Eliminar la variable Prescription ya que no es necesaria para el análisis
+
+# Definimos las variables numéricas a escalar
+numeric_vars <- c("AlcoholLevel", "HeartRate", "BloodOxygenLevel", 
+                  "Weight", "MRI_Delay", "Age", "BodyTemperature")
+
+# Calculamos la moda y las frecuencias para cada variable categórica
+calcular_moda_y_frecuencias <- function(vector_categorico) {
+  tabla_frecuencias <- table(vector_categorico)
+  moda <- names(tabla_frecuencias)[which.max(tabla_frecuencias)]
+  frecuencias <- as.data.frame(tabla_frecuencias)
+  return(list(moda = moda, frecuencias = frecuencias))
+}
+
+# Creamos una lista de almacenaje para los resultados
+resultados <- lapply(data[categorical_vars], calcular_moda_y_frecuencias)
+
+# Calculamos las modas y frecuencias de cada variable categórica por separado para una mejor comprensión
+for (var in categorical_vars) {
+  cat("Variable:", var, "\n")
+  cat("Moda:", resultados[[var]]$moda, "\n")
+  cat("Frecuencias:\n")
+  print(resultados[[var]]$frecuencias)
+  cat("\n")
+}
+
+# Ver la estructura de los datos después del preprocesamiento
+str(data)
+```
+
+```{r - Script 3 - Pruebas estadisticas}
+# Lista para almacenar los resultados de Chi-cuadrado y los residuales ajustados
+chi_square_results <- list()
+residuals_results <- list()
+
+# Pruebas estadisticas para variables categoricas
+for (var in categorical_vars) {
+  if (var != "Dementia") {
+    chi_test <- chisq.test(table(data[[var]], data$Dementia)) # Realizamos la prueba de Chi-cuadrado
+    chi_square_results[[var]] <- chi_test
+    residuals <- chi_test$stdres # Calculo de los residuales estandarizados ajustados
+    residuals_results[[var]] <- residuals
+    
+    # Imprimimos los resultados
+    print(paste("Chi-Square Test Results for:", var))
+    print(chi_test)
+    print(paste("Standardized Adjusted Residuals for:", var))
+    print(residuals)
+  }
+}
+
+# Pruebas estadísticas para variables cuantitativas
+
+t_test_results <- list()
+mann_whitney_results <- list()
+for (var in numeric_vars) {
+  if (length(data[[var]]) == length(data$Dementia)) {
+   
+    shapiro_test <- shapiro.test(data[[var]]) # Comprobamos la normalidad de los datos usando la prueba de Shapiro-Wilk
+    
+     # Si los datos son normales, usar prueba t de Student
+    if (shapiro_test$p.value > 0.05) {
+      t_test <- t.test(data[[var]] ~ data$Dementia)
+      t_test_results[[var]] <- t_test  
+      
+      # Si los datos no son normales, usar prueba U de Mann-Whitney
+    } else {
+      mann_whitney_test <- wilcox.test(data[[var]] ~ data$Dementia)
+      mann_whitney_results[[var]] <- mann_whitney_test
+    }
+  } else {
+    print(paste("La variable", var, "no tiene la misma longitud que Dementia"))
+  }
+}
+# Mostramos resultados de las pruebas t de Student
+t_test_results
+
+# Mostramos resultados de las pruebas U de Mann-Whitney
+mann_whitney_results
+```
+
+```{r - Script 4 - Gráficos Interactivos Variables numericas}
+# Gráfico interactivo para la variable "Age"
+
+plot_age <- ggplot(data, aes(x = Dementia, fill = factor(Age))) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Edad") +
+  scale_x_discrete(labels = c("0" = "No Demencia", "1" = "Demencia")) + 
+  theme_minimal()
+plot_age_interactive <- ggplotly(plot_age)
+plot_age_interactive <- plot_age_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_age_interactive
+
+# Gráfico interactivo para la variable "AlcoholLevel"
+
+alcohol_ranges <- cut(data$AlcoholLevel, 
+                      breaks = c(0.00, 0.05, 0.1, 0.15, 0.2), labels = c("0-0.05", "0.05-0.1", "0.1-0.15", "0.15-0.2"))
+data$AlcoholLevel <- factor(alcohol_ranges)
+plot_alcohol <- ggplot(data, aes(x = Dementia, fill = AlcoholLevel)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Alcohol") +
+  scale_x_discrete(labels = c("0" = "No demencia", "1" = "Demencia")) +
+  scale_fill_discrete(name = "Alcohol Level", labels = c("0-0.05", "0.05-0.1", "0.1-0.15", "0.15-0.2")) +   theme_minimal()
+plot_alcohol_interactive <- ggplotly(plot_alcohol)
+plot_alcohol_interactive <- plot_alcohol_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_alcohol_interactive
+
+# Gráfico interactivo para la variable "HeartRate"
+
+plot_heartrate <- ggplot(data, aes(x = Dementia, fill = factor(HeartRate))) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Heart Rate") +
+  scale_x_discrete(labels = c("0" = "No Demencia", "1" = "Demencia")) + 
+  theme_minimal()
+plot_heartrate_interactive <- ggplotly(plot_heartrate)
+plot_heartrate_interactive <- plot_heartrate_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_heartrate_interactive
+
+# Gráfico interactivo para la variable "BloodOxygenLevel"
+
+oxygen_ranges <- cut(data$BloodOxygenLevel, 
+                     breaks = c(90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100), 
+                     labels = c("90-91", "91-92", "92-93", "93-94", "94-95", "95-96", "96-97", "97-98", "98-99", "99-100"))
+data$BloodOxygenLevel <- factor(oxygen_ranges, levels = c("90-91", "91-92", "92-93", "93-94", "94-95", "95-96", "96-97", "97-98", "98-99", "99-100"))
+plot_oxygen <- ggplot(data, aes(x = factor(Dementia), fill = BloodOxygenLevel)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Blood Oxygen",
+       x = "Presencia de Demencia",
+       y = "Conteo") +
+  scale_x_discrete(labels = c("0" = "No demencia", "1" = "Demencia")) +
+  scale_fill_discrete(name = "Nivel de Oxígeno en Sangre") +
+  theme_minimal()
+plot_oxygen_interactive <- ggplotly(plot_oxygen)
+plot_oxygen_interactive <- plot_oxygen_interactive %>%
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_oxygen_interactive
+
+# Gráfico interactivo para la variable "BodyTemperature"
+
+temperature_ranges <- cut(data$BodyTemperature, 
+                          breaks = c(36, 36.1, 36.2, 36.3, 36.4, 36.5, 36.6, 36.7, 36.8, 36.9, 37, 37.1, 37.2, 37.3, 37.4, 37.5),
+                          labels = c("36-36.1", "36.1-36.2", "36.2-36.3", "36.3-36.4", "36.4-36.5", "36.5-36.6", "36.6-36.7", "36.7-36.8", "36.8-36.9", "36.9-37", "37-37.1", "37.1-37.2", "37.2-37.3", "37.3-37.4", "37.4-37.5"))
+data$BodyTemperature <- factor(temperature_ranges)
+plot_temperature <- ggplot(data, aes(x = Dementia, fill = BodyTemperature)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Body Temperature") +
+  scale_x_discrete(labels = c("0" = "No demencia", "1" = "Demencia")) +
+ scale_fill_discrete(name = "Body Temperature", labels = c("36-36.1", "36.1-36.2", "36.2-36.3", "36.3-36.4", "36.4-36.5", "36.5-36.6", "36.6-36.7", "36.7-36.8", "36.8-36.9", "36.9-37", "37-37.1", "37.1-37.2", "37.2-37.3", "37.3-37.4", "37.4-37.5"))
+theme_minimal()
+plot_temperature_interactive <- ggplotly(plot_temperature)
+plot_temperature_interactive <- plot_temperature_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_temperature_interactive
+
+# Gráfico interactivo para la variable "Weight"
+
+weight_ranges <- cut(data$Weight, 
+                          breaks = c(50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100),
+                          labels = c("50-55", "55-60", "60-65", "65-70", "70-75", "75-80", "80-85", "85-90", "90-95", "95-100"))
+data$Weight <- factor(weight_ranges)
+plot_weight <- ggplot(data, aes(x = Dementia, fill = Weight)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Weight") +
+  scale_x_discrete(labels = c("0" = "No demencia", "1" = "Demencia")) +
+ scale_fill_discrete(name = "Peso", labels = c("50-55", "55-60", "60-65", "65-70", "70-75", "75-80", "80-85", "85-90", "90-95", "95-100"))
+theme_minimal()
+plot_weight_interactive <- ggplotly(plot_weight )
+plot_weight_interactive <- plot_weight_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_weight_interactive
+
+# Gráfico interactivo para la variable "MRI_Delay"
+
+mri_ranges <- cut(data$MRI_Delay, 
+                          breaks = c(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60),
+                          labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35", "35-40", "40-45", "45-50", "50-55", "55-60"))
+data$MRI_Delay <- factor(mri_ranges)
+plot_mri <- ggplot(data, aes(x = Dementia, fill = MRI_Delay)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "MRI Delay") +
+  scale_x_discrete(labels = c("0" = "No demencia", "1" = "Demencia")) +
+ scale_fill_discrete(name = "Peso", labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35", "35-40", "40-45", "45-50", "50-55", "55-60"))
+theme_minimal()
+plot_mri_interactive <- ggplotly(plot_mri )
+plot_mri_interactive <- plot_mri_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_mri_interactive
+```
+
+```{r - Script 5 - Gráficos interactivos para las variables categoricas}
+
+# Grafico interactivo para la variable "Gender"
+plot_gender <- ggplot(data, aes(x = Dementia, fill = Gender)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Gender") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_gender_interactive <- ggplotly(plot_gender)
+plot_gender_interactive <- plot_gender_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_gender_interactive
+
+# Gráfico interactivo para la variable "Diabetic"
+plot_diabetic <- ggplot(data, aes(x = Dementia, fill = factor(Diabetic))) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Diabetic") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_diabetic_interactive <- ggplotly(plot_diabetic)
+plot_diabetic_interactive <- plot_diabetic_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_diabetic_interactive
+
+# Gráfico interactivo para la variable "Educational_Level"
+
+plot_education <- ggplot(data, aes(x = Dementia, fill = Education_Level)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Education Level") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_education_interactive <- ggplotly(plot_education)
+plot_education_interactive <- plot_education_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_education_interactive
+
+# Gráfico interactivo para la variable "Family_History"
+
+plot_family <- ggplot(data, aes(x = Dementia, fill = Family_History)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Family History") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_family_interactive <- ggplotly(plot_family)
+plot_family_interactive <- plot_family_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_family_interactive
+
+# Gráfico interactivo para la variable "APOE_ε4"
+
+plot_apoe <- ggplot(data, aes(x = Dementia, fill = APOE_ε4)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "APOE_ε4") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_apoe_interactive <- ggplotly(plot_apoe)
+plot_apoe_interactive <- plot_apoe_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_apoe_interactive
+
+# Gráfico interactivo para la variable "Smoking_Status"
+
+plot_smoking <- ggplot(data, aes(x = Dementia, fill = Smoking_Status)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Smoking") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_smoking_interactive <- ggplotly(plot_smoking)
+plot_smoking_interactive <- plot_smoking_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_smoking_interactive
+
+# Gráfico interactivo para la variable "Physical_Activity"
+
+plot_activity <- ggplot(data, aes(x = Dementia, fill = Physical_Activity)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Physical Activity") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_activity_interactive <- ggplotly(plot_activity)
+plot_activity_interactive <- plot_activity_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_activity_interactive
+
+# Gráfico interactivo para la variable "Depresion_Status"
+
+plot_depression <- ggplot(data, aes(x = Dementia, fill = Depression_Status)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Depression") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_depression_interactive <- ggplotly(plot_depression)
+plot_depression_interactive <- plot_depression_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_depression_interactive
+
+# Gráfico interactivo para la variable "Nutrition_Diet"
+
+plot_diet <- ggplot(data, aes(x = Dementia, fill = Nutrition_Diet)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Nutrition Diet") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_diet_interactive <- ggplotly(plot_diet)
+plot_diet_interactive <- plot_diet_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_diet_interactive
+
+# Gráfico interactivo para la variable "Sleep_Quality"
+
+plot_sleep <- ggplot(data, aes(x = Dementia, fill = Sleep_Quality)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Sleep Quality") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_sleep_interactive <- ggplotly(plot_sleep)
+plot_sleep_interactive <- plot_sleep_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_sleep_interactive
+
+# Gráfico interactivo para la variable "Chronic_Health_Conditions"
+
+plot_chronic <- ggplot(data, aes(x = Dementia, fill = `Chronic_Health_Conditions`)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Chronic Health Condition") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_chronic_interactive <- ggplotly(plot_chronic)
+plot_chronic_interactive <- plot_chronic_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_chronic_interactive
+
+# Gráfico interactivo para la variable "Medication_History"
+
+plot_medication <- ggplot(data, aes(x = Dementia, fill = `Medication_History`)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Medication History") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_medication_interactive <- ggplotly(plot_medication)
+plot_medication_interactive <- plot_medication_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_medication_interactive
+
+# Gráfico interactivo para la variable "Dominant_Hand"
+
+plot_hand <- ggplot(data, aes(x = Dementia, fill = `Dominant_Hand`)) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Dominant Hand") +
+  scale_x_discrete(labels = c("No Demencia" = "0", "Demencia" = "1")) +
+  theme_minimal()
+plot_hand_interactive <- ggplotly(plot_hand)
+plot_hand_interactive <- plot_hand_interactive %>% 
+  layout(
+    xaxis = list(
+      tickvals = c("0", "1"),  
+      ticktext = c("No demencia", "Demencia")  
+    )
+  )
+plot_hand_interactive
+
+# Grafico interactivo para la variable "Dementia"
+ frecuencias_dementia <- table(data$Dementia)
+df_dementia <- as.data.frame(frecuencias_dementia)
+
+# Creamos un gráfico circular interactivo
+fig <- plot_ly(
+  data = df_dementia,
+  labels = ~Var1,          # Etiquetas (categorías)
+  values = ~Freq,          # Valores (frecuencias)
+  type = 'pie'            # Tipo de gráfico
+)
+
+# Personalizamos el diseño
+fig <- fig %>%
+  layout(
+    title = "Distribución de Categorías de Dementia",
+    showlegend = TRUE,      # Mostrar leyenda
+    annotations = list(
+      list(
+        text = "Dementia",  # Texto en el centro del gráfico (solo para gráficos de donut)
+        font = list(size = 20, color = "#ffffff"),
+        showarrow = FALSE
+      )
+    )
+  )
+
+# Mostramos el gráfico
+fig
+```
+
+```{r - Script 6 - Desarollo del modelo con "Random Forest"}
+
+# Convertimos variables categóricas a factores en todo el dataset 'data'
+data$Education_Level <- factor(data$Education_Level)
+data$Dominant_Hand <- factor(data$Dominant_Hand)
+data$Gender <- factor(data$Gender)
+data$Family_History <- factor(data$Family_History)
+data$Smoking_Status <- factor(data$Smoking_Status)
+data$APOE_ε4 <- factor(data$APOE_ε4)
+data$Physical_Activity <- factor(data$Physical_Activity)
+data$Depression_Status <- factor(data$Depression_Status)
+data$Medication_History <- factor(data$Medication_History)
+data$Nutrition_Diet <- factor(data$Nutrition_Diet)
+data$Sleep_Quality <- factor(data$Sleep_Quality)
+data$Chronic_Health_Conditions <- factor(data$Chronic_Health_Conditions)
+
+# División de los datos en conjuntos de entrenamiento y prueba
+set.seed(40) # usamos la misma semilla en todos los modelos para reproducibilidad
+train_index <- sample(1:nrow(data), 0.7 * nrow(data))
+train_data <- data[train_index, ]
+test_data <- data[-train_index, ]
+
+# Convertimos la variable de respuesta "Dementia" a factor en los conjuntos de datos
+train_data$Dementia <- factor(train_data$Dementia)
+test_data$Dementia <- factor(test_data$Dementia)
+
+# Ajustamos el modelo random forest
+dementia_rf <- randomForest(Dementia ~ ., data = train_data, ntree = 500)
+
+# Predicciones de clase para los datos de prueba
+prediccionesrf <- predict(dementia_rf, newdata = test_data)
+
+# Probabilidades predichas para los datos de prueba
+prob_predrf <- predict(dementia_rf, newdata = test_data, type = "prob")
+
+# Comprobacion de los nombres de las columnas en prob_predrf 
+colnames(prob_predrf) <- make.names(colnames(prob_predrf))
+
+# Calculamos métricas de rendimiento
+conf_matrf <- confusionMatrix(prediccionesrf, test_data$Dementia)
+accuracyrf <- conf_matrf$overall['Accuracy']
+precisionrf <- conf_matrf$byClass['Pos Pred Value']
+recallrf <- conf_matrf$byClass['Sensitivity']
+
+# Calculamos la area debajo de la curva ("AUC") con "pROC"
+roc_obj1 <- roc(test_data$Dementia, prob_predrf[, "X1"])
+auc_valuerf <- auc(roc_obj1)
+
+# Calculamos el intervalo de Confianza para la "AUC"
+ci_aucrf <- ci.auc(roc_obj1)
+
+# Mostramos los resultados de las metricas para "Random Forest"
+cat("Exactitud:", accuracyrf, "\n")
+cat("Precisión:", precisionrf, "\n")
+cat("Sensibilidad:", recallrf, "\n")
+cat("Área bajo la curva (AUC):", auc_valuerf, "\n")
+cat("Intervalo de Confianza (AUC):", ci_aucrf, "\n")
+
+# Variables mas importantes
+importance_obj <- importance(dementia_rf)
+
+# Convertir la matriz a un dataframe
+importance_df <- data.frame(
+  Variable = rownames(importance_obj),
+  Importance = importance_obj[, "MeanDecreaseGini"]
+)
+importance_df <- importance_df[order(-importance_df$Importance), ] # Reordenamos por importancia
+print(importance_df)
+```
+
+```{r}
+while (dev.cur() > 1) dev.off()
+```
+
+```{r - Script 7 - Grafica AUC para modelo de Random Forest}
+# Crear la gráfica ROC
+roc_plot1 <- ggplot(data = data.frame(
+      fpr = roc_obj1$specificities,
+      tpr = roc_obj1$sensitivities
+    ), aes(x = 1 - fpr, y = tpr)) +
+      geom_line(color = "blue", size = 1) +
+      geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
+      annotate("text", x = 0.5, y = 0.2, label = paste("AUC =", round(auc_valuerf, 4)), size = 5) +
+      labs(title = "Curva ROC para el modelo Random Forest",
+           x = "1 - Especificidad",
+           y = "Sensibilidad") +
+      theme_minimal()
+    roc_plot1_interactive <- ggplotly(roc_plot1)
+    roc_plot1_interactive
+```
+
+```{r - Script 8 - Desarollo del modelo con "Decision Tree"}
+
+# Ajustamos el modelo de árbol de decisión
+dementia_tree <- rpart(Dementia ~ ., data = train_data, method = "class")
+
+# Predicciones de clase para los datos de prueba
+prediccionesdc <- predict(dementia_tree, newdata = test_data, type = "class")
+
+# Probabilidades predichas para los datos de prueba
+prob_preddc <- predict(dementia_tree, newdata = test_data, type = "prob")
+
+# Comprobacion del nombre de las columnas
+colnames(prob_preddc) <- make.names(colnames(prob_preddc))
+
+# Calculamos métricas de rendimiento
+conf_mat <- confusionMatrix(prediccionesdc, test_data$Dementia)
+
+accuracydc <- conf_mat$overall['Accuracy']
+precisiondc <- conf_mat$byClass['Pos Pred Value']
+recalldc <- conf_mat$byClass['Sensitivity']
+
+# Calculamos la "AUC" con pROC
+roc_obj2 <- roc(test_data$Dementia, prob_preddc[, "X1"])
+auc_valuedc <- auc(roc_obj2)
+
+# Calculamos el intervalo de Confianza para la "AUC"
+ci_aucdc <- ci.auc(roc_obj2)
+
+# Resultados del modelo de arbol de decsion
+cat("Exactitud:", accuracydc, "\n")
+cat("Precisión:", precisiondc, "\n")
+cat("Sensibilidad:", recalldc, "\n")
+cat("Área bajo la curva (AUC):", auc_valuedc, "\n")
+cat("Intervalo de Confianza (AUC):", ci_aucdc, "\n")
+
+# Importancia de las variables segun el modelo de arbol de decision
+importance_df <- data.frame(
+  Variable = names(dementia_tree$variable.importance),
+  Importance = dementia_tree$variable.importance
+)
+
+importance_df <- importance_df[order(-importance_df$Importance), ]
+print(importance_df)
+```
+
+```{r - Script 9 - Grafica AUC para modelo de Arbol de Decision}
+roc_plot2 <- ggplot(data = data.frame(
+      fpr = roc_obj2$specificities,
+      tpr = roc_obj2$sensitivities
+    ), aes(x = 1 - fpr, y = tpr)) +
+      geom_line(color = "blue", size = 1) +
+      geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
+      annotate("text", x = 0.5, y = 0.2, label = paste("AUC =", round(auc_valuedc, 4)), size = 5) +
+      labs(title = "Curva ROC para el modelo Decision Tree",
+           x = "1 - Especificidad",
+           y = "Sensibilidad") +
+      theme_minimal()
+    roc_plot2_interactive <- ggplotly(roc_plot2)
+    roc_plot2_interactive
+```
+
+
+```{r - Script 10 - Desarollo del modelo con "SVM"}
+
+# Ajustamos el modelo de SVM
+model_svm <- svm(Dementia ~ ., data = train_data, probability = TRUE)
+
+# Predicciones de clase para los datos de prueba
+prediccionessvm <- predict(model_svm, newdata = test_data, probability = TRUE)
+prob_predsvm <- attr(prediccionessvm, "probabilities")[,2] # Obtener probabilidades para la clase positiva
+
+# Convertimos las predicciones a factores
+prediccionessvm <- factor(prediccionessvm, levels = levels(test_data$Dementia))
+
+# Calculamos métricas de rendimiento
+conf_mat <- confusionMatrix(prediccionessvm, test_data$Dementia)
+
+accuracysvm <- conf_mat$overall['Accuracy']
+precisionsvm <- conf_mat$byClass['Pos Pred Value']
+recallsvm <- conf_mat$byClass['Sensitivity']
+
+# Calcular otra vez la "AUC" con pROC para este modelo
+roc_obj3 <- roc(test_data$Dementia, prob_predsvm)
+auc_valuesvm <- auc(roc_obj3)
+
+# Calculamos el intervalo de Confianza para la "AUC"
+ci_aucsvm <- ci.auc(roc_obj3)
+
+# Mostramos resultados del modelo SVM
+cat("Exactitud:", accuracysvm, "\n")
+cat("Precisión:", precisionsvm, "\n")
+cat("Sensibilidad:", recallsvm, "\n")
+cat("Área bajo la curva (AUC):", auc_valuesvm, "\n")
+cat("Intervalo de Confianza (AUC):", ci_aucsvm, "\n")
+```
+
+```{r - Script 11 - Grafíca ROC para el modelo SVM}
+# Crear una gráfica ROC usando ggplot2
+roc_plot3 <- ggplot(data = data.frame(
+      fpr = roc_obj3$specificities,
+      tpr = roc_obj3$sensitivities
+    ), aes(x = 1 - fpr, y = tpr)) +
+      geom_line(color = "blue", size = 1) +
+      geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
+      annotate("text", x = 0.5, y = 0.2, label = paste("AUC =", round(auc_valuesvm, 4)), size = 5) +
+      labs(title = "Curva ROC para el modelo SVM",
+           x = "1 - Especificidad",
+           y = "Sensibilidad") +
+      theme_minimal()
+    roc_plot3_interactive <- ggplotly(roc_plot3)
+    roc_plot3_interactive
+```
+
