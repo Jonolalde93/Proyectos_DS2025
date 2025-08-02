@@ -1,0 +1,1575 @@
+﻿<!DOCTYPE html><!DOCTYPE html>
+<html lang="en">
+<!-- Video Card Becnhmark data Copyrighted by Passmark Software. Do not copy these charts or the information they contain -->
+<head>
+	<title>PassMark - Video Card (GPU) Benchmarks - GPU Mega Page - Detailed List of Benchmarked Videocards</title>
+	<meta charset="UTF-8">
+	<meta name="DESCRIPTION" content="Video Card Benchmarks - Over 200,000 Video Cards and 900 Models Benchmarked and compared in graph form - This page is an alphabetical listing of video card models we have obtained benchmark information for.">
+	<meta name="KEYWORDS" content="Video Card, chart, graph, compare, comparison, comparing, test, benchmark, software, multiple, GPU, high, performance, PC, computer, program, speed, testing, hardware, benchmarking, NVidia, GeForce, Radeon, ATI, review">
+	<meta name="ZOOMPAGEBOOST" content="3">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="/passmark.css?v=3.3" type="text/css">
+	<link rel="stylesheet" href="/tabnav.css?v=3.3" type="text/css">
+	<!-- <link rel="stylesheet" href="passmark_specials.css"> -->
+	<link rel="stylesheet" href="cpuTable.css" type="text/css">
+	<link rel="stylesheet" href="dropdown.css" type="text/css">
+	<link rel="stylesheet" href="/chart.css" type="text/css">
+	<link rel="stylesheet" href="source/css/style.css" type="text/css">
+	<link rel="stylesheet" href="source/css/bootstrap.min.css" type="text/css">
+
+
+	<link rel="stylesheet" href="/js/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" type="text/css">
+
+	<!--
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	-->
+
+	<link rel="preconnect" href="https://www.google-analytics.com">
+<script async src="//cdn.fuseplatform.net/publift/tags/2/1220/fuse.js"></script></head>
+<body>
+	<script type="text/javascript" src="/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/js/dropdown.js"></script>
+<script type="text/javascript" src="/source/js/script.js"></script>
+<header>
+        <div class="container-fluid fixed_main" id="main_menu">
+            <nav class="nav navbar navbar-expand-md navbar-light bg-light">
+
+                <a class="navbar-brand" href="https://www.passmark.com/" aria-label="PassMark Homepage"><img src="/img/PassMarkLogo.png" alt=""></a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icons icon_bar"></span>
+                </button>
+
+                <div class="collapse navbar-collapse  justify-content-start" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a data-activemenu="software" class="nav-link dropdown-toggle" href="#" id="softwareDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Software
+                        </a>
+                        <div class="dropdown-menu big-dropdown-menu ddmenu_left_112" aria-labelledby="softwareDropdown">
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/products/burnintest/index.php">
+                                    BurnInTest
+                                    <span class="menu_desc">PC Reliability and Load Testing</span>
+                                </a>
+
+                                <span class="menu_tips_button">
+                                        <a href="https://passmark.com/products/burnintest/index.php">Learn More</a>
+                                        <a href="https://passmark.com/products/burnintest/download.php">Free Trial</a>
+                                        <a href="https://passmark.com/products/burnintest/price.php">Buy</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/products/performancetest/index.php">
+                                    PerformanceTest
+                                     <span class="menu_desc">Easy PC Benchmarking</span>
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a href="https://passmark.com/products/performancetest/index.php">Learn More</a>
+                                    <a href="https://passmark.com/products/performancetest/download.php">Free Trial</a>
+                                    <a href="https://passmark.com/products/performancetest/price.php">Buy</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://www.osforensics.com/">
+                                    OSForensics
+                                    <span class="menu_desc">Extract forensic data from a PC</span>
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a href="https://www.osforensics.com/">Learn More</a>
+                                    <a href="https://www.osforensics.com/download.html">Free Trial</a>
+                                    <a href="/sales/cart.php?add&id=PM060&qty=1">Buy</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a href="https://www.memtest86.com/" class="dropdown-item">
+                                    MemTest86
+                                    <span class="menu_desc">Industry standard for memory testing</span>
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a href="https://www.memtest86.com/">Learn More</a>
+                                    <a href="https://www.memtest86.com/download.htm">Free Trial</a>
+                                    <a href="/sales/cart.php?add&id=PM077&qty=1">Buy</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/products/wirelessmonitor/">
+                                    WirelessMon
+                                    <span class="menu_desc">Monitor WiFi hot spots in real time</span>
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a href="https://passmark.com/products/wirelessmonitor/">Learn More</a>
+                                    <a href="https://passmark.com/downloads/wirelessmon.exe">Free Trial</a>
+                                    <a href="https://passmark.com/products/wirelessmonitor/price.php">Buy</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://www.passmark.com/products/bitmgtconsole/index.php">
+                                    Management Console
+                                    <span class="menu_desc">Test Results Database</span>
+                                </a>
+                                
+                                <span class="menu_tips_button">
+                                    <a href="https://www.passmark.com/products/bitmgtconsole/index.php">Learn More</a>
+                                    <a href="https://www.passmark.com/burnintest/management/dashboard.php">Demo</a>
+                                    <a href="https://www.passmark.com/products/bitmgtconsole/price.php">Buy</a>
+                                </span>
+                            </div>
+                            <a class="dropdown-item all_width" href="https://www.passmark.com/products/index.php">All Software Products <span class="icon icon_right"></span> </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a data-activemenu="hardware" class="nav-link dropdown-toggle" href="#" id="hardwareDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hardware
+                        </a>
+                        <div class="dropdown-menu big-dropdown-menu ddmenu_left_111" aria-labelledby="hardwareDropdown">
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/products/usb3loopback/index.php">
+                                    USB3.0 Loopback Plugs
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a href="https://passmark.com/products/usb3loopback/index.php">Learn More</a>
+                                    <a href="https://passmark.com/products/usb3loopback/price.php">Buy</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/products/usb2loopback/index.php">
+                                    USB2.0 Loopback Plugs
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a href="https://passmark.com/products/usb2loopback/index.php">Learn More</a>
+                                    <a href="https://passmark.com/products/usb2loopback/price.php">Buy</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/products/pcie-test-card/index.php">
+                                    PCIe Test Cards
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a href="https://passmark.com/products/pcie-test-card/index.php">Learn More</a>
+                                    <a href="https://passmark.com/products/pcie-test-card/price.php">Buy</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/products/usb-power-delivery-tester/index.php">
+                                    USB Power Delivery Tester
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a href="https://passmark.com/products/usb-power-delivery-tester/index.php">Learn More</a>
+                                    <a href="https://passmark.com/products/usb-power-delivery-tester/price.php">Buy</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/products/loopback/index.php">
+                                    Serial, Parallel Loopback Plugs
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a href="https://passmark.com/products/loopback/index.php">Learn More</a>
+                                    <a href="https://passmark.com/products/loopback/price.php">Buy</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/products/usb-short-circuit-tester/index.php">
+                                    USB Short Circuit Testers
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a href="https://passmark.com/products/usb-short-circuit-tester/index.php">Learn More</a>
+                                    <a href="https://passmark.com/products/usb-short-circuit-tester/price.php">Buy</a>
+                                </span>
+                            </div>
+                            <a class="dropdown-item all_width" href="https://passmark.com/products/hardware.php">
+                                All Hardware Products <span class="icon icon_right"></span>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="benchmarksDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Benchmarks
+                        </a>
+                        <div class="dropdown-menu big-dropdown-menu ddmenu_left_110" aria-labelledby="benchmarksDropdown">
+                            <div class="one_big_submenu_item">
+                                <a target="_blank" class="dropdown-item" href="https://www.cpubenchmark.net/">
+                                    CPU Benchmarks
+
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.cpubenchmark.net/">Learn More</a>
+
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a target="_blank" class="dropdown-item" href="https://www.videocardbenchmark.net/">
+                                    Video Card Benchmarks
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.videocardbenchmark.net/">Learn More</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a target="_blank" class="dropdown-item" href="https://www.harddrivebenchmark.net/">
+                                    Hard Drive Benchmarks
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.harddrivebenchmark.net/">Learn More</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a target="_blank" class="dropdown-item" href="https://www.memorybenchmark.net/">
+                                    RAM Benchmarks
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.memorybenchmark.net/">Learn More</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a target="_blank" class="dropdown-item" href="https://www.pcbenchmarks.net/">
+                                    PC Systems Benchmarks
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.pcbenchmarks.net/">Learn More</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a target="_blank" class="dropdown-item" href="https://www.softwaremarketshare.net/">
+                                    Software Marketshare
+                                </a>
+                                
+                                <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.softwaremarketshare.net/">Learn More</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a target="_blank" class="dropdown-item" href="https://www.databasebenchmarks.net/">
+                                    Database Benchmarks
+                                </a>
+                                
+                                <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.databasebenchmarks.net/">Learn More</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a target="_blank" class="dropdown-item" href="https://www.androidbenchmark.net/">
+                                    Android Benchmarks
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.androidbenchmark.net/">Learn More</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a target="_blank" class="dropdown-item" href="https://www.iphonebenchmark.net/">
+                                    iOS Benchmarks
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.iphonebenchmark.net/">Learn More</a>
+                                </span>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a target="_blank" class="dropdown-item" href="https://www.bandwidthtest.net/">
+                                    Internet Bandwidth
+                                </a>
+
+                                <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.bandwidthtest.net/">Learn More</a>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                        <div class="dropdown-menu one-column-drop-menu ddmenu_left_113" aria-labelledby="servicesDropdown">
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/services/index.php">
+                                    Software Customization
+                                </a>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/services/it-consultancy.php">
+                                    Independent Benchmarking Labs
+                                </a>
+
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/services/market-analysis.php">
+                                    Hardware & Software Market Trends
+                                </a>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/reports/index.php">
+                                    Benchmark Reports
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="sales_link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Store
+                        </a>
+                        <div class="dropdown-menu big-dropdown-menu colum-2-menu" aria-labelledby="sales_link">
+                            <div class="column_1_submenu">
+                                <div class="submeu_block_title">
+                                    Purchase
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/sales/index.php">
+                                        Products
+                                        <span class="menu_desc">Major software\hardware products</span>
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/index.php">Learn More</a>
+                                    </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/sales/upgrade/index.php">
+                                       Upgrades
+                                       <span class="menu_desc">Purchasing Software Upgrades</span>
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/upgrade/index.php">Learn More</a>
+                                    </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/sales/sitelicenses/index.php">
+                                        Site Licenses
+                                        <span class="menu_desc">Purchasing Site Licenses</span>
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/sitelicenses/index.php">Learn More</a>
+                                    </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/sales/support/index.php">
+                                        Support
+                                        <span style="line-height: 13px;" class="menu_desc">Purchasing Support \ <br> Support for site licenses</span>
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/support/index.php">Learn More</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="column_2_submenu">
+                                <div class="submeu_block_title">
+                                    INFO
+                                </div>
+
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/sales/purchase_orders.php">
+                                        Purchase Orders
+                                         <span class="menu_desc">How to order with a PO</span>
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/purchase_orders.php">Learn More</a>
+                                    </span>
+                                </div>
+
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/support/ordering_faq.php">
+                                        FAQ
+                                        <span class="menu_desc">Information about ordering & <br> shipping</span>
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                        <a href="https://passmark.com/support/ordering_faq.php">Learn More</a>
+                                    </span>
+                                </div>
+
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/sales/specials/index.php">
+                                        Specials
+                                        <span class="menu_desc">Monthly specials</span>
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/specials/index.php">Learn More</a>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <!--
+                            <a class="dropdown-item all_width" href="#">All Hardware Products <span class="icon icon_right"></a> -->
+                        </div>
+                    </li>
+                    <li class="nav-item ">
+                        <a id="support_link" class="nav-link" href="https://passmark.com/support/index.php">Support</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutUsDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            About Us
+                        </a>
+                        <div class="dropdown-menu one-column-drop-menu ddmenu_left_114" aria-labelledby="aboutUsDropDown">
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/about/index.php">
+                                    Company
+
+                                </a>
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/about/contact_us.php">
+                                    Contact Us
+
+                                </a>
+
+                            </div>
+                            <div class="one_big_submenu_item">
+                                <a class="dropdown-item" href="https://passmark.com/press/index.php">
+                                    The Press Room
+
+                                </a>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="https://passmark.com/forum/index.php">Forums</a>
+                    </li>
+
+                </ul>
+
+
+
+                </div>
+
+                <ul id="search_form" class="nav navbar-nav left-nav-bar">
+                    <li class="active">
+                        <form action="https://www.passmark.com/search/zoomsearch.php" class="form-inline my-lg-0">
+                            <input name="zoom_query" id="search_input" class="form-control mr-sm-2" type="search" placeholder="Search entire site..." aria-label="Search">
+                            <button id="search_submit" class="icon_search icons" type="submit" aria-label="Submit Search"></button>
+                        </form>
+                    </li>
+                    <li>
+                        <a href="https://www.passmark.com/about/contact_us.php" aria-label="Contact Us">
+                            <span class="icons icon_phone"></span>
+                        </a>
+                    </li>
+                    <li>
+                    <div class="cmp-header mob-cmp-h">
+    <a href="/singleCompare.php?redirect"><svg viewBox="0 0 40 40" id="icon-header-compare">
+    <path d="M24.7155 5H34C34.8284 5 35.5 5.67157 35.5 6.5C35.5 7.32843 34.8284 8 34 8H24.7155C24.0291 9.74779 22.1771 11 20 11C17.8229 11 15.9709 9.74779 15.2845 8H6C5.17163 8 4.5 7.32843 4.5 6.5C4.5 5.67157 5.17163 5 6 5H15.2845C15.9709 3.25221 17.8229 2 20 2C22.1771 2 24.0291 3.25221 24.7155 5Z"></path>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 11.0845L18 26.0845V26.5C18 29.1843 17.1319 31.5684 15.5183 33.295C13.8968 35.0299 11.6146 36 9 36C6.38542 36 4.10321 35.0299 2.48172 33.295C0.86806 31.5684 0 29.1843 0 26.5V26.0845L9 11.0845ZM3.1269 28C3.36348 29.3415 3.91726 30.4374 4.67351 31.2465C5.68709 32.3311 7.15488 33 9 33C10.8451 33 12.3129 32.3311 13.3265 31.2465C14.0827 30.4374 14.6365 29.3415 14.8731 28H3.1269ZM13.8507 25H4.14929L9 16.9155L13.8507 25Z"></path>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M31 11.0845L40 26.0845V26.5C40 29.1843 39.1319 31.5684 37.5183 33.295C35.8968 35.0299 33.6146 36 31 36C28.3854 36 26.1032 35.0299 24.4817 33.295C22.8681 31.5684 22 29.1843 22 26.5V26.0845L31 11.0845ZM25.1269 28C25.3635 29.3415 25.9173 30.4374 26.6735 31.2465C27.6871 32.3311 29.1549 33 31 33C32.8451 33 34.3129 32.3311 35.3265 31.2465C36.0827 30.4374 36.6365 29.3415 36.8731 28H25.1269ZM35.8507 25H26.1493L31 16.9155L35.8507 25Z"></path>
+</svg>
+
+      <span id="indexcmp3" class="number-cmp">0</span>
+    </a>
+  </div>
+                    </li>
+                </ul>
+
+
+
+            </nav>
+        </div>
+        <script>
+
+        $(document).ready(function(){
+                    $(".navbar-toggler").click(function() {
+                        $("#navbarSupportedContent").toggle();
+                    })
+
+ $("#benchmarksDropdown").click(function() {
+                        $(".ddmenu_left_110").toggleClass('show');
+                    })
+            $("#hardwareDropdown").click(function() {
+                        $(".ddmenu_left_111").toggleClass('show');
+                    })
+             $("#softwareDropdown").click(function() {
+                        $(".ddmenu_left_112").toggleClass('show');
+                    })
+            $("#servicesDropdown").click(function() {
+                        $(".ddmenu_left_113").toggleClass('show');
+                    })
+            $("#sales_link").click(function() {
+                        $(".colum-2-menu").toggleClass('show');
+                    })
+            $("#aboutUsDropDown").click(function() {
+                        $(".ddmenu_left_114").toggleClass('show');
+                    })
+        })
+
+
+
+        </script>
+    </header>
+	<style type="text/css">
+		#loading {
+		   width: 100%;
+		   height: 100%;
+		   top: 0;
+		   left: 0;
+		   position: fixed;
+		   display: block;
+		   background:rgba(256,256,256,0.7);
+		   z-index: 199;
+		   text-align: center;
+		}
+
+		#loading-content {
+		  position: absolute;
+		  top: 50%;
+		  left: 35%;
+		  width: 25%;
+		  height: 200px;
+		  text-align: center;
+		  z-index: 200;
+		  background:rgba(256,256,256,1.0);
+		  border: 5px solid rgb(65,107,115);
+		  border-radius: 25px;
+		}
+
+		.na { font-size: x-small; }
+		.bold {	font-weight: bold; }
+		.collapsed {
+			margin: 2px;
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			background: url('./images/tablesorter_expand.png') no-repeat 3px 3px;
+			outline: 0;
+		}
+		.mega-cmps {
+			width: 100%;
+		}
+		.expanded {
+			margin: 2px;
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			background: url('./images/tablesorter_expand.png') no-repeat -24px 3px;
+			outline: 0;
+		}
+
+		.contentborder { width: 1200px; }
+
+		.dataTable-blue td.details-control {
+			/*
+			text-align:center;
+            color:forestgreen;
+			*/
+
+			border-right: none;
+			background-image: url("./images/expand.png");
+			background-position: center;
+			background-repeat: no-repeat;
+
+			cursor: pointer;
+			min-width: 15px;
+
+		}
+		.dataTable-blue tr.shown td.details-control {
+			/*
+			text-align:center;
+			color:red;
+			*/
+
+			border-right: none;
+			background-image: url("./images/collapse.png");
+			background-position: center;
+			background-repeat: no-repeat;
+			cursor: pointer;
+		}
+
+		tr.odd > td, tr.odd + tr.child {
+			background-color: #ebf2fa;
+		}
+		tr.even > td, tr.even + tr.child {
+			background-color: #fff;
+		}
+
+		/*************
+		  Blue Theme
+		 *************/
+		/* overall */
+		.dataTable-blue {
+			width: 100%;
+			background-color: #fff;
+			margin: 10px 0 15px;
+			text-align: left;
+			border-spacing: 0;
+			border: #cdcdcd 1px solid;
+			border-width: 1px 0 0 1px;
+		}
+		.dataTable-blue th,
+		.dataTable-blue td {
+			border: #cdcdcd 1px solid;
+			border-width: 0 1px 1px 0;
+		}
+
+		/* header */
+		.dataTable-blue th,
+		.dataTable-blue thead td {
+			font: bold 12px/18px Arial, Sans-serif;
+			color: #000;
+			background-color: #99bfe6;
+			border-collapse: collapse;
+			padding: 4px;
+			text-shadow: 0 1px 0 rgba(204, 204, 204, 0.7);
+		}
+
+		.dataTable-blue tbody td,
+		.dataTable-blue tfoot th,
+		.dataTable-blue tfoot td {
+			padding: 4px;
+			vertical-align: top;
+		}
+
+		#cputable.dataTable-blue thead .sorting:before,
+		#cputable.dataTable-blue thead .sorting_asc:before,
+		#cputable.dataTable-blue thead .sorting_desc:before,
+		#cputable.dataTable-blue thead .sorting_asc_disabled:before,
+		#cputable.dataTable-blue thead .sorting_desc_disabled:before {
+		  font-size: 1.25em;
+		  content: "\25B2";
+		  right: 1.5em;
+		}
+		#cputable.dataTable-blue thead .sorting:after,
+		#cputable.dataTable-blue thead .sorting_asc:after,
+		#cputable.dataTable-blue thead .sorting_desc:after,
+		#cputable.dataTable-blue thead .sorting_asc_disabled:after,
+		#cputable.dataTable-blue thead .sorting_desc_disabled:after
+		{
+		  font-size: 1.25em;
+		  content: "\25BC";
+		  right: .75em;
+		}
+
+		/*** custom css only popup ***/
+		.columnSelectorWrapper {
+		  position: relative;
+		  margin: 10px 0;
+		  display: inline-block;
+		}
+		.columnSelector, .hidden {
+		  display: none;
+		}
+		.columnSelectorButton {
+		  background: #99bfe6;
+		  border: #888 1px solid;
+		  color: #111;
+		  border-radius: 5px;
+		  padding: 5px;
+		}
+
+		#colSelect:checked + label {
+		  background: #5797d7;
+		  border-color: #555;
+		}
+		#colSelect:checked ~ #columnSelector {
+		  display: block;
+		}
+
+		.columnSelector {
+		  width: 150px;
+		  position: absolute;
+		  top: 30px;
+		  padding: 10px;
+		  background: #fff;
+		  border: #99bfe6 1px solid;
+		  border-radius: 5px;
+		  z-index: 1;
+		  text-align: left;
+		}
+		.columnSelector label {
+		  display: block;
+		}
+		.columnSelector label:nth-child(1) {
+		  border-bottom: #99bfe6 solid 1px;
+		  margin-bottom: 5px;
+		}
+		.columnSelector input {
+		  margin-right: 5px;
+		}
+		.columnSelector .disabled {
+		  color: #ddd;
+		}
+
+		#cputable_length select {
+		    margin-left: 10px;
+			margin-right: 10px;
+			background-color: white;
+			border: 1px solid black;
+		}
+
+		.dataTables_info {
+			width: 50%;
+		}
+
+		.dataTables_paginate {
+			width: 50%;
+			float: right;
+			display: inline;
+
+		}
+
+		ul.pagination li a {
+			margin: 10px 0px;
+			font-size: 16px;
+			margin: 0px 4px;
+		}
+
+		ul.pagination li.active a {
+			font-weight: bold;
+			color: black;
+		}
+
+		.categorySelectorButton {
+		  background: #99bfe6;
+		  border: #888 1px solid;
+		  color: #111;
+		  border-radius: 5px;
+		  padding: 5px;
+		}
+
+	</style>
+  	<script>
+  $(document).ready(function(){
+    $(".mob-dropd").click(function() {
+        $("#mob-drop").toggle();
+    })
+  });
+
+  $(window).on( "resize", function() {
+    if( $(window).width() > 992 )
+    {
+      $("#mob-drop").css("display", "flex");
+    }
+    else
+    {
+      $("#mob-drop").css("display", "none");
+    }
+  });
+</script>
+<div id="tabs" >
+  <div class="wrap-tub">
+<a href="/">
+  <img src="/img/home-1.svg" alt="iconcharts"></a>
+  <div class="mob-dropd" style="display: none;">
+
+  <h2>Video Card</h2>
+  </div>
+  </div>
+  <ul class="container" id="mob-drop">
+    <li><a href="//www.cpubenchmark.net/"><span class="currenttab2"><span class="othertab">CPU Benchmarks</span></span></a></li>
+    <li><a href="//www.videocardbenchmark.net/"><span class="othertab2"><span class="currenttab">Video Card Benchmarks</span></span></a></li>
+    <li><a href="//www.harddrivebenchmark.net/"><span class="othertab2"><span class="othertab">Hard Drive Benchmarks</span></span></a></li>
+    <li><a href="//www.memorybenchmark.net/"><span class="othertab2"><span class="othertab">Memory Benchmarks</span></span></a></li>
+    <li><a href="//www.pcbenchmarks.net/"><span class="othertab2"><span class="othertab">PC Benchmarks</span></span></a></li>
+    <li><a href="//www.softwaremarketshare.net/"><span class="othertab2"><span class="othertab">Software Marketshare<span></span></a></li>
+    <li><a href="//www.databasebenchmarks.net/"><span class="othertab2"><span class="othertab">Database Benchmarks</span></span></a></li>
+    <li><a href="//www.androidbenchmark.net/"><span class="othertab2"><span class="othertab">Android Benchmarks</span></span></a></li>
+    <li><a href="//www.iphonebenchmark.net/"><span class="othertab2"><span class="othertab">iOS Benchmarks</span></span></a></li>
+  </ul>
+  <div class="cmp-header">
+  	<a href="/singleCompare.php?redirect">    <svg viewBox="0 0 40 40" id="icon-header-compare">
+    <path d="M24.7155 5H34C34.8284 5 35.5 5.67157 35.5 6.5C35.5 7.32843 34.8284 8 34 8H24.7155C24.0291 9.74779 22.1771 11 20 11C17.8229 11 15.9709 9.74779 15.2845 8H6C5.17163 8 4.5 7.32843 4.5 6.5C4.5 5.67157 5.17163 5 6 5H15.2845C15.9709 3.25221 17.8229 2 20 2C22.1771 2 24.0291 3.25221 24.7155 5Z"></path>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 11.0845L18 26.0845V26.5C18 29.1843 17.1319 31.5684 15.5183 33.295C13.8968 35.0299 11.6146 36 9 36C6.38542 36 4.10321 35.0299 2.48172 33.295C0.86806 31.5684 0 29.1843 0 26.5V26.0845L9 11.0845ZM3.1269 28C3.36348 29.3415 3.91726 30.4374 4.67351 31.2465C5.68709 32.3311 7.15488 33 9 33C10.8451 33 12.3129 32.3311 13.3265 31.2465C14.0827 30.4374 14.6365 29.3415 14.8731 28H3.1269ZM13.8507 25H4.14929L9 16.9155L13.8507 25Z"></path>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M31 11.0845L40 26.0845V26.5C40 29.1843 39.1319 31.5684 37.5183 33.295C35.8968 35.0299 33.6146 36 31 36C28.3854 36 26.1032 35.0299 24.4817 33.295C22.8681 31.5684 22 29.1843 22 26.5V26.0845L31 11.0845ZM25.1269 28C25.3635 29.3415 25.9173 30.4374 26.6735 31.2465C27.6871 32.3311 29.1549 33 31 33C32.8451 33 34.3129 32.3311 35.3265 31.2465C36.0827 30.4374 36.6365 29.3415 36.8731 28H25.1269ZM35.8507 25H26.1493L31 16.9155L35.8507 25Z"></path>
+</svg>
+
+      <span id="indexcmp" class="number-cmp">0    </span>
+    </a>
+  </div>
+
+</div>
+		<div class="main-title">
+			<div class="container">
+				<h2> Videocard Benchmarks</h2>
+				<p>	Over 1,000,000 Video Cards Benchmarked</p>
+			</div>
+		</div>
+		<div class="block_content">
+			<div class="container">
+				<div id="main_content">
+					<div class="productheader" >
+						<h1>Video Card List</h1>
+					</div>
+
+					<div class="main-text-cmps">
+						<div class="main-cmps-head">
+							<p>Below is an alphabetical list of all Video Card types that appear in the charts. Clicking on a specific processor name will take you to the chart it appears in and will highlight it for you.</p>
+						</div>
+						<div class="banner-block">
+<!-- 71161633/PMS_vidb/chart_hrec_1 --><div data-fuse="21816662699"></div><!-- 71161633/PMS_vidb/mob_chart_mrec_1 --><div data-fuse="21854506945"></div>						</div>
+					</div>
+					<div class="wrapper">
+						<div class="hiden-cmp" style="display: none;">
+													</div>
+						<div class="main-cmps mega-cmps">
+							<p><span class="bold" style="font-size:large;">Videocards</span> <em>Last Updated: 25th of June 2025</em></p>
+
+							<!-- This selector markup is completely customizable -->
+							<div class="columnSelectorWrapper" style="float:left;">
+							  <label class="columnSelectorButton" for="colSelect">Columns</label>
+							  <div id="columnSelector" class="columnSelector">
+								<label><input type="checkbox" data-column="auto" checked class="checked">Auto</label>
+								<label class="disabled"><input type="checkbox" data-column="2" disabled>Price</label>
+								<label class="disabled"><input type="checkbox" data-column="4" disabled>Videocard Value</label>
+								<label class="disabled"><input type="checkbox" data-column="5" checked data-default="1" disabled>G2D Mark</label>
+								<label class="disabled"><input type="checkbox" data-column="6" checked data-default="1" disabled>TDP</label>
+								<label class="disabled"><input type="checkbox" data-column="7" disabled>Power Perf.</label>
+								<label class="disabled"><input type="checkbox" data-column="8" checked data-default="1" disabled>VRAM</label>
+								<label class="disabled"><input type="checkbox" data-column="9" disabled>Test Date</label>
+								<label class="disabled"><input type="checkbox" data-column="10" checked data-default="1" disabled>Category</label>
+							  </div>
+							</div>
+
+						<div class="megatable-wrap">
+														<table id="cputable" class="dataTable-blue" style="width:100%;">
+								<thead>
+									<tr>
+										<th></th>
+										<th>Videocard Name<br><input id="search_name" type="text" placeholder="Search..."/></th>
+										<th>Price<sup><a href="#notes">1</a></sup></th>
+										<th>G3D Mark<br>
+											<input id="g3d_min" type="text" size="6" placeholder="Min..."/>&nbsp;-&nbsp;<input id="g3d_max" type="text" size="6" placeholder="Max..."/>
+										</th>
+										<th>Videocard Value<sup><a href="#notes">2</a></sup></th>
+										<th>G2D Mark<br>
+											<input id="g2d_min" type="text" size="6" placeholder="Min..."/>&nbsp;-&nbsp;<input id="g2d_max" type="text" size="6" placeholder="Max..."/>
+										</th>
+										<th>TDP (W)<br>
+											<input id="tdp_min" type="text" size="4" placeholder="Min..."/>&nbsp;-&nbsp;<input id="tdp_max" type="text" size="4" placeholder="Max..."/>
+										</th>
+										<th>Power Perf.<sup><a href="#notes">4</a></sup></th>
+										<th>VRAM (MB)<br>
+											<input id="vram_min" type="text" size="4" placeholder="Min..."/>&nbsp;-&nbsp;<input id="vram_max" type="text" size="4" placeholder="Max..."/>
+										</th>
+										<th>Test Date<sup><a href="#notes">5</a></sup></th>
+										<th>Category<br>
+											<!--
+											<select id="search_category">
+												<option value=""></option>
+												<option value="Unknown">Unknown</option>
+												<option value="Desktop">Desktop</option>
+												<option value="Mobile">Mobile</option>
+												<option value="Workstation">Workstation</option>
+											</select>
+											-->
+
+											<div class="columnSelectorWrapper" style="float:left;">
+												<label class="categorySelectorButton" for="colSelect">Categories</label>
+												<div id="search_category" class="columnSelector">
+													<label><input type="checkbox" data-column="all" checked class="checked">All</label>
+													<label class="disabled"><input type="checkbox" data-column="Unknown" data-default="1" checked disabled>Unknown</label>
+													<label class="disabled"><input type="checkbox" data-column="Desktop" data-default="1"checked disabled>Desktop</label>
+													<label class="disabled"><input type="checkbox" data-column="Mobile" data-default="1" checked disabled>Mobile</label>
+													<label class="disabled"><input type="checkbox" data-column="Workstation" data-default="1" checked disabled>Workstation</label>
+												</div>
+											</div>
+
+										</th>
+									</tr>
+								</thead>
+							</table>
+							<br/>
+							<p id="notes" style="margin-left: 4em;">
+								<strong>Notes:</strong><br>
+								<sup>1</sup> Price is obtained from our affiliates. '*' after the price denotes the last seen price for products that are no longer available.<br>
+								<sup>2</sup> Videocard Value is calculated by taking G3D Mark / Price.<br>
+								<sup>4</sup> Power Performance is calculated by taking G3D Mark / TDP.<br>
+								<sup>5</sup> Test Date is the date of our first benchmark submission.<br>
+							</p>
+							<br/>
+							<div class="banner-block">
+							<!-- 71161633/PMS_vidb/chart_hrec_2 --><div data-fuse="21816768130"></div><!-- 71161633/PMS_vidb/mob_chart_mrec_2 --><div data-fuse="21854506948"></div>							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>    
+    <div class="container-fluid" id="footer_nav_block">
+        <div class="row">
+            <div class="col-md-2 col-lg-2 col-sm-6 col-6">
+                <span class="menu_header"><a class="nav-link " href="https://www.passmark.com/products/index.php">Software</a></span>
+                <ul class="nav flex-column mobile-collapse">
+                    <li class="nav-item">
+                        <a class="nav-link " href="https://www.passmark.com/products/burnintest/index.php">BurnInTest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/products/performancetest/index.php">PerformanceTest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.osforensics.com/">OSForensics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.memtest86.com/">MemTest86</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/products/wirelessmonitor/index.php">WirelessMon</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/products/bitmgtconsole/index.php">Management Console</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.zoomsearchengine.com/zoom/">Zoom Search Engine</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/products/index.php#2">Free Software</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-6 col-6">
+                <span class="menu_header"><a class="nav-link " href="https://www.passmark.com/products/hardware.php">Hardware</a></span>
+                <ul class="nav flex-column mobile-collapse">
+                    <li class="nav-item">
+                        <a class="nav-link " href="https://www.passmark.com/products/usb3loopback/index.php">USB3.0 Loopback Plugs </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/products/usb2loopback/index.php">USB2.0 Loopback Plugs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/products/pcie-test-card/index.php">PCIe Test Cards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/products/usb-power-delivery-tester/index.php">USB Power Delivery Tester</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/products/loopback/index.php">Serial and Parallel Loopback Plugs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/products/usb-short-circuit-tester/index.php">USB Short Circuit Testers</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-sm-6 col-6">
+                <span class="menu_header"><a class="nav-link " href="https://www.cpubenchmark.net/">Benchmarks</a></span>
+                <ul class="nav flex-column mobile-collapse">
+                    <li class="nav-item">
+                        <a class="nav-link " href="https://www.cpubenchmark.net/" target="_blank">CPU Benchmarks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.videocardbenchmark.net/" target="_blank">Video Card Benchmarks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.harddrivebenchmark.net/" target="_blank">Hard Drive Benchmarks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.memorybenchmark.net/" target="_blank">RAM Benchmarks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.pcbenchmarks.net/" target="_blank">PC Systems Benchmarks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.softwaremarketshare.net/" target="_blank">Software Marketshare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.databasebenchmarks.net/" target="_blank">Database Benchmarks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.androidbenchmark.net/" target="_blank">Android Benchmarks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.iphonebenchmark.net/" target="_blank">iOS Benchmarks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.bandwidthtest.net/" target="_blank">Internet Bandwidth</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-sm-6 col-6">
+                <span class="menu_header"><a class="nav-link " href="https://www.passmark.com/about/index.php">About Us</a></span>
+                <ul class="nav flex-column mobile-collapse">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/about/index.php">Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/about/contact_us.php">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.passmark.com/press/index.php">The Press Room</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-sm-6 col-6">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <span class="menu_header">
+                            <a class="nav-link " href="https://www.passmark.com/services/index.php">
+                                Services
+                            </a>
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="menu_header">
+                            <a class="nav-link " href="https://www.passmark.com/sales/index.php">
+                                Store
+                            </a>
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="menu_header">
+                            <a class="nav-link " href="https://www.passmark.com/support/index.php">
+                                Support
+                            </a>
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="menu_header">
+                            <a class="nav-link " href="https://www.passmark.com/forum/index.php">
+                                Forums
+                            </a>
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="menu_header">
+                            <a class="nav-link " href="https://www.passmark.com/legal/compliance.php">
+                                Compliance
+                            </a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-sm-6 col-6">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <span class="menu_header">
+                                <a class="nav-link " href="https://www.passmark.com/international.php">
+                                    International
+                                </a>
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="menu_header">
+                                <a class="nav-link " href="https://www.passmark.com/legal/disclaimer.php">
+                                    Disclaimer 
+                                </a>
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="menu_header">
+                                <a class="nav-link " href="https://www.passmark.com/legal/refund.php">
+                                    Refunds
+                                </a>
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="menu_header">
+                                <a class="nav-link " href="https://www.passmark.com/legal/privacy-policy.php">
+                                    Privacy
+                                </a>
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="menu_header">
+                                <span class="nav-link social_footer">
+                                    Social 
+                                        <span class="soc_icon">
+                                        <a href="https://twitter.com/PassMarkInc" target="_blank">
+                                            <img src="/img/tweet.png" alt="twitter icon">
+                                        </a>
+                                        <a class="icon_youtube" href="https://www.youtube.com/user/PassmarkSoftware/videos" target="_blank">
+                                            <img src="/img/youtube.png" alt="youtube icon">
+                                        </a>
+                                        </span>
+                                </span>
+                            </span>
+                        </li>
+    
+                    </ul>
+                </div>
+
+        </div>    
+    </div>
+    <div class="container-fluid" id="footer_copyright_block">
+        <div class="row">
+            <div id="coryright" class="col-md-6 col-lg-6 col-sm-12 col-12">
+                <p>Copyright &copy; 2025 PassMark&reg; Software</p>
+            </div>
+
+            <div id="paiment_types" class="col-md-6 col-lg-6 col-sm-12 col-12">
+                <div class="paiment_logo">
+                    <img src="/img/logo_pay_ae.png" alt="logo_pay_ae">
+                </div>
+                <div class="paiment_logo">
+                    <img src="/img/logo_pay_maestro_1.png" alt="logo_pay_maestro_1">
+                </div>
+                <div class="paiment_logo">
+                    <img src="/img/logo_pay_maestro_2.png" alt="logo_pay_maestro_2">
+                </div>
+                <div class="paiment_logo">
+                    <img src="/img/logo_pay_pp.png" alt="logo_pay_pp">
+                </div>
+                <div class="paiment_logo">
+                    <img src="/img/logo_pay_visa.png" alt="logo_pay_visa">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-44160635-8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-44160635-8');
+</script>
+
+<div class="mobileadunit"><!-- 71161633/PMS_vidb/mob_ros_sticky --><div data-fuse="21854506954"></div></div><div id="toast" style="display: none;"><div id="img"><svg viewBox="0 0 30 30"><use xlink:href="#icon-header-compare"></use></svg></div><div id="desc">Added CPU to Compare!</div></div>	<!-- <script type="text/javascript" src="/js/DataTables/datatables.min.js"></script> -->
+
+	<script type="text/javascript" src="/js/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/js/DataTables/DataTables-1.10.20/js/dataTables.bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		function format ( d ) {
+			// `d` is the original data object for the row
+
+			var buffer = '<div style="margin-left:25px;">';
+			buffer += '<div><span class="bold">Bus Interface</span>: ' + d.bus + '</div>';
+			buffer += '<div><span class="bold">Max Memory</span>: ' + d.memSize + '</div>';
+			buffer += '<div><span class="bold">Core Clock</span>: ' + d.coreClk + '</div>';
+			buffer += '<div><span class="bold">Mem Clock</span>: ' + d.memClk + '</div>';
+			buffer += '<div><span class="bold">Rank</span>: ' + d.rank + '</div>';
+			buffer += '<div><span class="bold">Samples</span>: ' + d.samples + '</div>';
+			buffer += '</div>';
+
+			return buffer;
+		}
+
+		$.fn.dataTable.ext.errMode = 'throw';
+
+		$.fn.dataTable.ext.type.order['my-vram-pre'] = function ( d ) {
+			let t = d.replace(/\sMB$/g, '');
+			var result = t.match(/^(\d+(\.\d{0,9})?)$/);
+			return result != null ? parseFloat(result[1]) : 0.00;
+		};
+
+		$.fn.dataTable.ext.type.order['my-num-pre'] = function ( d ) {
+			var result = d.match(/^(\d+(\.\d{0,9})?)$/);
+			return result != null ? parseFloat(result[1]) : 0.00;
+		};
+
+		$.fn.dataTable.ext.type.order['my-price-pre'] = function ( d ) {
+			var result = d.replace(/[$,\*]/g, '');
+			result = result.match(/([0-9]+\.[0-9]{2})/);
+			return result != null ? parseFloat(result[1]) : 0.00;
+		};
+
+		$.fn.dataTable.ext.type.order['my-date-pre'] = function ( d ) {
+			// format your data for normalization
+			var results = d.match(/([A-Za-z]+)\s([0-9]{4})/);
+			var year = 2016;
+			var month = 1;
+			if (results != null && results.length == 3) {
+				year = results[2];
+				switch (results[1]) {
+					case "Feb":
+						month = 2;
+						break;
+					case "Mar":
+						month = 3;
+						break;
+					case "Apr":
+						month = 4;
+						break;
+					case "May":
+						month = 5;
+						break;
+					case "Jun":
+						month = 6;
+						break;
+					case "Jul":
+						month = 7;
+						break;
+					case "Aug":
+						month = 8;
+						break;
+					case "Sep":
+						month = 9;
+						break;
+					case "Oct":
+						month = 10;
+						break;
+					case "Nov":
+						month = 11;
+						break;
+					case "Dec":
+						month = 12;
+						break;
+					case "Jan":
+					default:
+						month = 1;
+						break;
+				}
+			}
+
+			var testDate = new Date(year, month, 1);
+			return testDate.getTime();
+		};
+
+		/* Custom filtering function which will search data in column four between two values */
+		$.fn.dataTable.ext.search.push(
+			function( settings, data, dataIndex )
+			{
+				// G3D
+				var min = parseInt( $('#g3d_min').val(), 10 );
+				var max = parseInt( $('#g3d_max').val(), 10 );
+				var val = parseFloat( data[3].replace(/,/g, "") ) || 0; // use data for the age column
+
+				if( !isNaN( min ) && min > val )
+					return false;
+
+				if( !isNaN( max ) && max < val )
+					return false;
+
+				// G2D
+				min = parseInt( $('#g2d_min').val(), 10 );
+				max = parseInt( $('#g2d_max').val(), 10 );
+				val = parseFloat( data[5].replace(/,/g, "") ) || 0;
+
+				if( !isNaN( min ) && min > val )
+					return false;
+
+				if( !isNaN( max ) && max < val )
+					return false;
+
+				// TDP
+				min = parseInt( $('#tdp_min').val(), 10 );
+				max = parseInt( $('#tdp_max').val(), 10 );
+				val = parseFloat( data[6] ) || 0;
+
+				if( !isNaN( min ) && min > val )
+					return false;
+
+				if( !isNaN( max ) && max < val )
+					return false;
+
+				// VRAM
+				min = parseInt( $('#vram_min').val(), 10 );
+				max = parseInt( $('#vram_max').val(), 10 );
+				var val = parseFloat( data[8].match(/\d+/g) ) || 0;
+
+				if( !isNaN( min ) && min > val )
+					return false;
+
+				if( !isNaN( max ) && max < val )
+					return false;
+
+				return true;
+			}
+		);
+
+		$(document).ready(function()
+		{
+			var table = $('#cputable')
+							.DataTable( {
+				"ajax" : "/data",
+
+				/*
+				"paging": false,
+				"dom": 'rti',
+				*/
+
+				"dom": 'lrtip',
+				"pageLength": 250,
+				"lengthMenu":  [ [100, 250, 500, -1], [100, 250, 500, "All"] ],
+
+				searchDelay: 500,
+
+				"columnDefs": [
+					{"type": "my-num", "targets": [4, 6, 7]},
+					{"type": "my-vram", "targets": 8},
+					{"type": "my-date", "targets": 9},
+					{"type": "my-price", "targets": 2}
+				],
+				"columns": [
+					{
+						"className":      'details-control',
+						"orderable":      false,
+						"data":           null,
+						"defaultContent": '',
+
+						/*
+						"render": function () {
+							//return '<i class="fa fa-plus-square" aria-hidden="true"></i>';
+							return '<a></a>';
+						 },
+						 */
+						 width: "15px"
+
+					},
+					{
+						"data": "name",
+						"render": function ( data, type, row, meta ) {
+							if( type !== 'display' )
+								return data;
+
+							return '<a href="' + (row.output ? 'video_lookup' : 'gpu') + '.php?gpu='+row.href+'">'+data+'</a>';
+						}
+					},
+					{
+						"data": "price",
+						"searchable": false,
+						"type": "my-price",
+						"visible": false,
+						"render": function ( data, type, row, meta ) {
+							if( type !== 'display' )
+								return data;
+
+							return '<a href="gpu.php?gpu='+row.href+'#price">'+data+'</a>';
+						}
+					},
+					{
+						"data": "g3d",
+						/*
+						"render": function ( data, type, row, meta ) {
+							if( type !== 'display' )
+								return data;
+
+							return '<a href="gpu.php?gpu='+row.href+'">'+data+'</a>';
+						}
+						*/
+					},
+					{
+						"data": "value",
+						"searchable": false,
+						"type": "my-num",
+						"visible": false,
+					},
+					{
+						"data": "g2d",
+						"type": "num"
+					},
+					{
+						"data": "tdp",
+						"type": "my-num"
+					},
+					{
+						"data": "powerPerf",
+						"searchable": false,
+						"type": "my-num",
+						"visible": false
+					},
+					{
+						"data": "memSize",
+						"type": "my-vram"
+					},
+					{
+						"data": "date",
+						"searchable": false,
+						"type": "my-date",
+						"visible": false
+					},
+					{ "data": "cat"	}
+				],
+				"order": [[1, 'asc']],
+
+				initComplete: function ()
+				{
+
+				}
+
+			});
+
+			// Add event listener for opening and closing details
+			$('#cputable tbody').on('click', 'td.details-control', function () {
+				var tr = $(this).closest('tr');
+				var row = table.row( tr );
+
+				if ( row.child.isShown() ) {
+					// This row is already open - close it
+					row.child.hide();
+					tr.removeClass('shown');
+				}
+				else {
+					// Open this row
+					row.child( format(row.data()), "child" ).show();
+					tr.addClass('shown');
+				}
+			} );
+
+			table.on("user-select", function (e, dt, type, cell, originalEvent) {
+				if ($(cell.node()).hasClass("details-control")) {
+					e.preventDefault();
+				}
+			});
+
+			$('#search_name').on('keyup change clear', function (e) {
+				if ( table.column(1).search() !== this.value ) {
+					table.column(1)
+						.search( this.value )
+						.draw();
+				}
+			} );
+
+			$('#cputable input, select').on('click', function () {
+				event.stopPropagation();
+			});
+
+			/*
+			$('#search_category').on( 'change', function (e) {
+				e.stopPropagation();
+				var val = $.fn.dataTable.util.escapeRegex(
+					$(this).val()
+				);
+
+				table.column(10)
+					.search( val ? val : '', false, true )
+					.draw();
+			} );
+			*/
+
+			$('.categorySelectorButton').on('click', function(e) {
+				e.stopPropagation();
+				$('#search_category').toggle();
+			});
+
+			$('#search_category label').on('click', function(e) {
+				e.stopPropagation();
+			});
+
+			$('#search_category input[type="checkbox"]').on( 'change', function() {
+
+
+
+				var column = $(this).attr('data-column');
+				//console.log( "data-column: " + column + " is " + ( $(this).is(":not(:checked)") ? "NOT " : "") + "checked" );
+
+				let pattern = "";
+
+				if( column == "all" )
+				{
+					var checkboxes = $(this).parent().siblings('label').find('input[type="checkbox"]');
+
+					if( $(this).prop( 'checked' ) )
+					{
+						$(this).parent().siblings('label').addClass( "disabled" );
+						$.each( checkboxes, function( i, v )
+						{
+							$(v).prop('disabled', true );
+							if(  v.hasAttribute('data-column') && $(v).attr('data-column') != "auto" )
+							{
+								if(v.hasAttribute('data-default'))
+								{
+									if(pattern.length > 0)
+										pattern += '|';
+
+									pattern += $(v).attr('data-column');
+								}
+							}
+						});
+					}
+					else
+					{
+						$(this).parent().siblings('label').removeClass( "disabled" );
+						$.each( checkboxes, function( i, v )
+						{
+							$(v).prop('disabled', false );
+
+							if( $(v).is(":checked") )
+							{
+								if(pattern.length > 0)
+									pattern += '|';
+
+								pattern += $(v).attr('data-column');
+							}
+						});
+					}
+				}
+				else
+				{
+					if( $(this).is(":checked") )
+						pattern += $(this).attr('data-column');
+
+					var checkboxes = $(this).parent().siblings('label').find('input[type="checkbox"]:checked');
+					$.each( checkboxes, function( i, v )
+					{
+						if(pattern.length > 0)
+							pattern += '|';
+
+						pattern += $(v).attr('data-column');
+					});
+				}
+
+				if(pattern.length == 0)
+					pattern = "blaalksdjf";
+
+				const regex = new RegExp(pattern);
+				table.column(10).search(pattern, true, false, true).draw();
+			});
+
+			$('.columnSelectorButton').on('click', function() {
+				$('#columnSelector').toggle();
+
+			});
+
+			$('#columnSelector input[type="checkbox"]').on( 'change', function() {
+				var column = $(this).attr('data-column');
+				console.log( "data-column: " + column + " is " + ( $(this).is(":not(:checked)") ? "NOT " : "") + "checked" );
+
+				if( column == "auto" )
+				{
+					var checkboxes = $(this).parent().siblings('label').find('input[type="checkbox"]');
+
+					if( $(this).prop( 'checked' ) )
+					{
+						$(this).parent().siblings('label').addClass( "disabled" );
+						$.each( checkboxes, function( i, v )
+						{
+							$(v).prop('disabled', true );
+
+							if(  v.hasAttribute('data-column') && $(v).attr('data-column') != "auto" )
+								table.column( $(v).attr('data-column') ).visible( v.hasAttribute('data-default') );
+
+						});
+					}
+					else
+					{
+						$(this).parent().siblings('label').removeClass( "disabled" );
+						$.each( checkboxes, function( i, v )
+						{
+							$(v).prop('disabled', false );
+
+							if( v.hasAttribute('data-column') && $(v).attr('data-column') != "auto" )
+								table.column( $(v).attr('data-column') ).visible( $(v).is(":checked") );
+						});
+					}
+
+					return;
+
+				}
+
+				table.column( column ).visible( $(this).is(":checked") );
+
+			});
+
+			// Event listener to the two range filtering inputs to redraw on input
+			$('#g3d_min, #g3d_max, #g2d_min, #g2d_max, #tdp_min, #tdp_max, #vram_min, #vram_max').on( 'keyup', function(e) {
+				e.stopPropagation();
+				table.draw();
+			} );
+
+		} );
+	</script>
+</body>
+</html>
