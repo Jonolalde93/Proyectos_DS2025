@@ -28,4 +28,10 @@ Se analizaron variables asociadas a la satisfacción y resolución del cliente (
 
 Se elaboro un gráfico por tipo de respuesta para las 10 empresas con más quejas, incluyendo la categoría "Low Count Companies".
 
+07-08-2025: Empezamos con los modelos, primero un modelo de clasificacion para ver si el consumidor disputara la queja.
+
+Primero hemos hecho un modelo de random forest, como teniamos duda sobre "Sub-product" se ha diseñado dos conjuntos uno con dicha columna y otro sin ella. El modelo parece tener problemas para clasificar correctamente "Yes", asi que se ha probado con SMOTE para ver si el overfitting de la clase puede mejorar el modelo. No parece ser el caso, ademas dado que las mejores metricas se encuentran si se incluye la clase "Sub-product vamos a optar por conservarla.
+
+Procedemos a hiperparametrizar con GridSearchCV, de no obtener buenos resultados probaremos con XGBoost.
+
 
