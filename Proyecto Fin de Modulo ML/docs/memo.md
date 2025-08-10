@@ -34,4 +34,6 @@ Primero hemos hecho un modelo de random forest, como teniamos duda sobre "Sub-pr
 
 Procedemos a hiperparametrizar con GridSearchCV, de no obtener buenos resultados probaremos con XGBoost.
 
+10-08-2025: Tras probar con XGBoost, vemos que a pesar de la hiperparametrizacion y el ajuste de los pesos, el modelo tiene dificultad para determinar la clase "Yes", lo que supone un problema. Tras intentar mejorarlo la mejora que obtenemos es marginal por los que nos quedamos con el ultimo modelo obtenido, con los parametros dados por el GridSearch y el umbral de 0.28
+
 
