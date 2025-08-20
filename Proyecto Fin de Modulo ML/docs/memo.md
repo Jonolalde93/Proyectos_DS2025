@@ -36,4 +36,14 @@ Procedemos a hiperparametrizar con GridSearchCV, de no obtener buenos resultados
 
 10-08-2025: Tras probar con XGBoost, vemos que a pesar de la hiperparametrizacion y el ajuste de los pesos, el modelo tiene dificultad para determinar la clase "Yes", lo que supone un problema. Tras intentar mejorarlo la mejora que obtenemos es marginal por los que nos quedamos con el ultimo modelo obtenido, con los parametros dados por el GridSearch y el umbral de 0.28
 
+18-08-2025: Para nuestro segundo modelo vamos a intentar predecir si la respuesta va a ser a tiempo o no, para este modelo de clasificacion binomial se van a desarrollar modelos empleando Random Forest y XGBoost de la misma forma que el modelo anterior.
+
+Tras realizar la funcion del pipeline el modelo muestra un rendimiento muy solido en terminos generales, la clase mayoritaria es predicha casi a la perfeccion sin embargo para la clase minoritaria este presenta un desempeño desigual. Con el fin de equilibrar dichos desempeños vamos ajustar el modelo mediante SMOTE para evaluar de nuevo su rendimiento.
+
+Gracias a SMOTE, el modelo fue capaz de mejorar el equilibrio en la detección de ambas clases.
+
+19-08-2025:
+
+
+
 
