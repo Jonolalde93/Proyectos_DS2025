@@ -1,0 +1,9 @@
+.venv
+.env
+
+models/
+*.joblib
+*.pkl
+
+__pycache__/
+*.py[cod]

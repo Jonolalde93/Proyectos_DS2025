@@ -1,0 +1,3 @@
+streamlit run app/app.py
+
+streamlit run "Proyecto Fin de Modulo ML/app/app.py"
