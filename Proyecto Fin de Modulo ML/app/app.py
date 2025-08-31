@@ -46,7 +46,7 @@ with st.sidebar.expander("📁 Modelos disponibles en /models", expanded=False):
 
 WHAT_IT_PREDICTS = {
     "Modelo 01": "¿El consumidor disputará la queja?",
-    "Modelo 02": "¿La respuesta llegará a tiempo?",
+    "Modelo 02": "¿La queja sera procesada a tiempo?",
     "Modelo 03": "Clasificación del tiempo de respuesta",
 }
 
