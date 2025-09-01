@@ -5,7 +5,6 @@ from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
 from sklearn.preprocessing import OneHotEncoder
 from xgboost import XGBClassifier
-from imblearn.over_sampling import SMOTE
 from imblearn.pipeline import Pipeline
 from sklearn.utils.class_weight import compute_class_weight
 
