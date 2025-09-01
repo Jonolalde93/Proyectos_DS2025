@@ -60,6 +60,10 @@ def load_model_any(path_str: str):
                 setattr(_sku, "_get_column_indices", _gci)
         except Exception:
             pass
+        if not hasattr(_sku, "_RemainderColsList"):
+            class _RemainderColsList(list):
+                pass
+            setattr(_sku, "_RemainderColsList", _RemainderColsList)
     except Exception:
         pass
 
