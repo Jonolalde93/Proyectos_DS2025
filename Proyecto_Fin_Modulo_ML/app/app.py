@@ -21,46 +21,78 @@ LABELS_M1 = ['No', 'Pending', 'Yes']
 LABELS_M2 = ['No', 'Yes']
 LABELS_M3 = {0: "<= 3 días", 1: "4–14 días", 2: "> 14 días"}
 
-EXCLUDE_COLS = {
-    "Modelo 01": ["ZIP code"],
-    "Modelo 02": ["ZIP code"],       
-    "Modelo 03": ["ZIP code"],
+EXCLUDE_COLS = {"Modelo 01": ["ZIP code"], "Modelo 02": ["ZIP code"], "Modelo 03": ["ZIP code"]}
+EXCLUDE_ALIASES = ["ZIP Code", "Zip code", "Zip Code"]
+
+WHAT_IT_PREDICTS = {
+    "Modelo 01": "¿El consumidor disputará la queja?",
+    "Modelo 02": "¿La queja será procesada a tiempo?",
+    "Modelo 03": "Clasificación del tiempo de respuesta",
 }
-EXCLUDE_ALIASES = ["ZIP Code", "Zip code", "Zip Code"]  
 
 st.sidebar.title("🔧 Configuración")
 modelo_seleccion = st.sidebar.selectbox("Elige el modelo", list(DEFAULT_PATHS.keys()))
-ruta_modelo = st.sidebar.text_input("Ruta del .pkl", DEFAULT_PATHS[modelo_seleccion])
+ruta_modelo_input = st.sidebar.text_input("Ruta del modelo (.skops o .pkl)", DEFAULT_PATHS[modelo_seleccion])
 
 if modelo_seleccion == "Modelo 02":
     thr = st.sidebar.slider("Threshold (clase 'Yes')", 0.0, 1.0, 0.50, 0.01)
 else:
     thr = None
 
-with st.sidebar.expander("📁 Modelos disponibles en /models", expanded=False):
+with st.sidebar.expander("📁 Modelos en /models", expanded=False):
     if MODELS_DIR.exists():
-        archivos = sorted([p.name for p in MODELS_DIR.glob("*.pkl")])
-        st.write(archivos if archivos else "No hay .pkl en models/")
+        archivos = sorted([p.name for p in MODELS_DIR.glob("*.pkl")] + [p.name for p in MODELS_DIR.glob("*.skops")])
+        st.write(archivos if archivos else "No hay ficheros de modelo en models/")
     else:
         st.write(f"No existe: {MODELS_DIR}")
-
-WHAT_IT_PREDICTS = {
-    "Modelo 01": "¿El consumidor disputará la queja?",
-    "Modelo 02": "¿La queja sera procesada a tiempo?",
-    "Modelo 03": "Clasificación del tiempo de respuesta",
-}
 
 st.title("📦 Predicción con modelos entrenados")
 st.markdown(f"**Modelo seleccionado:** `{modelo_seleccion}`")
 st.subheader(WHAT_IT_PREDICTS[modelo_seleccion])
 
 @st.cache_resource(show_spinner=True)
-def load_model(path: str):
-    if not os.path.exists(path):
-        raise FileNotFoundError(f"No se encontró el archivo del modelo: {path}")
-    model = joblib.load(path)
-    expected_cols = None
-    preproc = None
+def load_model_any(path_str: str):
+    path = Path(path_str)
+    candidate_paths = []
+    if path.suffix.lower() == ".pkl":
+        candidate_paths = [path.with_suffix(".skops"), path]
+    elif path.suffix.lower() == ".skops":
+        candidate_paths = [path]
+    else:
+        candidate_paths = [path.with_suffix(".skops"), path.with_suffix(".pkl")]
+    model = None
+    loaded_path = None
+    last_err = None
+    for cand in candidate_paths:
+        if cand.exists():
+            try:
+                if cand.suffix.lower() == ".skops":
+                    import skops.io as sio
+                    model = sio.load(str(cand))
+                else:
+                    model = joblib.load(str(cand))
+                loaded_path = str(cand)
+                break
+            except Exception as e:
+                last_err = e
+                continue
+    if model is None:
+        if path.exists():
+            try:
+                if path.suffix.lower() == ".skops":
+                    import skops.io as sio
+                    model = sio.load(str(path))
+                else:
+                    model = joblib.load(str(path))
+                loaded_path = str(path)
+            except Exception as e:
+                last_err = e
+    if model is None:
+        msg = f"No se pudo cargar el modelo. Probado: {', '.join([str(p) for p in candidate_paths])}"
+        if last_err:
+            msg += f"\nÚltimo error: {type(last_err).__name__}: {last_err}"
+        raise FileNotFoundError(msg)
+    expected_cols, preproc = None, None
     try:
         if hasattr(model, "named_steps") and "preprocessor" in model.named_steps:
             preproc = model.named_steps["preprocessor"]
@@ -68,10 +100,12 @@ def load_model(path: str):
                 expected_cols = list(preproc.feature_names_in_)
     except Exception:
         pass
-    return model, preproc, expected_cols
+    return model, preproc, expected_cols, loaded_path
 
 try:
-    model, preproc, expected_cols = load_model(ruta_modelo)
+    model, preproc, expected_cols, loaded_from = load_model_any(ruta_modelo_input)
+    import sklearn, numpy as _np, pandas as _pd
+    st.caption(f"ⓘ Cargado desde: `{loaded_from}` | sklearn={sklearn.__version__} | numpy={_np.__version__} | pandas={_pd.__version__}")
 except Exception as e:
     st.error(str(e))
     st.stop()
@@ -83,7 +117,6 @@ with st.expander("🔎 Columnas esperadas por el preprocesador", expanded=False)
         st.info("No se detectaron automáticamente las columnas esperadas.")
 
 def get_preproc_info(preproc):
-    """Obtiene input_cols, cat_cols (aunque 'cat' sea un Pipeline), cat_choices y num_cols."""
     input_cols, cat_cols, cat_choices, num_cols = None, [], {}, []
     if preproc is None:
         return input_cols, cat_cols, cat_choices, num_cols
@@ -102,10 +135,9 @@ def get_preproc_info(preproc):
                 ohe = None
                 if isinstance(transformer, Pipeline):
                     for _, step in transformer.steps:
-                        if OneHotEncoder is not None and isinstance(step, OneHotEncoder):
-                            ohe = step; break
-                        if hasattr(step, "categories_"):
-                            ohe = step; break
+                        if (OneHotEncoder is not None and isinstance(step, OneHotEncoder)) or hasattr(step, "categories_"):
+                            ohe = step
+                            break
                 else:
                     if hasattr(transformer, "categories_"):
                         ohe = transformer
@@ -171,26 +203,17 @@ def sanitize_for_model(
     excluded: set | None = None,
     num_cols_all: list | None = None
 ) -> pd.DataFrame:
-    """
-    - Si el preprocesador espera columnas concretas (expected_cols), las garantizamos:
-      * columnas excluidas => NaN (para que no influyan, pero cumplan el esquema).
-    - Categóricas a object/NaN; Numéricas a float (to_numeric).
-    """
     import pandas as _pd
     import numpy as _np
-
     def _is_missing(v):
         try:
             return _pd.isna(v)
         except Exception:
             return False
-
     excluded = set(excluded or set())
     cat_set = set(cat_cols_all or [])
     num_set = set(num_cols_all or [])
-
     dfx = df.copy()
-
     if expected_cols is not None:
         for c in expected_cols:
             if c not in dfx.columns:
@@ -199,10 +222,9 @@ def sanitize_for_model(
             if c in expected_cols:
                 dfx[c] = _np.nan
         dfx = dfx[expected_cols]
-
     for c in dfx.columns:
         if c in excluded:
-            continue  
+            continue
         if c in cat_set:
             dfx[c] = dfx[c].astype("object")
             dfx[c] = dfx[c].apply(
@@ -210,7 +232,6 @@ def sanitize_for_model(
             )
         else:
             dfx[c] = _pd.to_numeric(dfx[c], errors="coerce")
-
     return dfx
 
 st.markdown("---")
