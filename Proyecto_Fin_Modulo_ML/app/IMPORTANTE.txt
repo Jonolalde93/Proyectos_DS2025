@@ -5,4 +5,4 @@
 
 streamlit run app/app.py
 
-streamlit run "Proyecto Fin de Modulo ML/app/app.py"
+streamlit run "Proyecto_Fin_Modulo_ML/app/app.py"
