@@ -22,21 +22,13 @@ def _patch_sklearn_privates():
         if not hasattr(_sku, "_print_elapsed_time"):
             from contextlib import contextmanager
             @contextmanager
-            def _print_elapsed_time(prefix=None): yield
+            def _print_elapsed_time(prefix=None): 
+                yield
             setattr(_sku, "_print_elapsed_time", _print_elapsed_time)
         if not hasattr(_sku, "_message_with_time"):
-            def _message_with_time(msg, *a, **k): return msg
+            def _message_with_time(msg, *a, **k): 
+                return msg
             setattr(_sku, "_message_with_time", _message_with_time)
-
-        import sklearn.base as _skb
-        if not hasattr(_skb.BaseEstimator, "get_tags"):
-            def get_tags(self): return {}
-            setattr(_skb.BaseEstimator, "get_tags", get_tags)
-        if not hasattr(_skb.BaseEstimator, "sklearn_tags"):
-            def sklearn_tags(self):
-                try: return self.get_tags()
-                except Exception: return {}
-            setattr(_skb.BaseEstimator, "sklearn_tags", sklearn_tags)
     except Exception:
         pass
 
