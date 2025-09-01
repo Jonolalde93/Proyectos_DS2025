@@ -52,17 +52,32 @@ st.subheader(WHAT_IT_PREDICTS[modelo_seleccion])
 
 @st.cache_resource(show_spinner=True)
 def load_model_any(path_str: str):
+    try:
+        import sklearn.utils as _sku
+        try:
+            from sklearn.compose._column_transformer import _get_column_indices as _gci
+            if not hasattr(_sku, "_get_column_indices"):
+                setattr(_sku, "_get_column_indices", _gci)
+        except Exception:
+            pass
+    except Exception:
+        pass
+
+    from pathlib import Path
+    import joblib
+
     path = Path(path_str)
-    candidate_paths = []
     if path.suffix.lower() == ".pkl":
         candidate_paths = [path.with_suffix(".skops"), path]
     elif path.suffix.lower() == ".skops":
         candidate_paths = [path]
     else:
         candidate_paths = [path.with_suffix(".skops"), path.with_suffix(".pkl")]
+
     model = None
     loaded_path = None
     last_err = None
+
     for cand in candidate_paths:
         if cand.exists():
             try:
@@ -76,22 +91,24 @@ def load_model_any(path_str: str):
             except Exception as e:
                 last_err = e
                 continue
-    if model is None:
-        if path.exists():
-            try:
-                if path.suffix.lower() == ".skops":
-                    import skops.io as sio
-                    model = sio.load(str(path))
-                else:
-                    model = joblib.load(str(path))
-                loaded_path = str(path)
-            except Exception as e:
-                last_err = e
+
+    if model is None and path.exists():
+        try:
+            if path.suffix.lower() == ".skops":
+                import skops.io as sio
+                model = sio.load(str(path))
+            else:
+                model = joblib.load(str(path))
+            loaded_path = str(path)
+        except Exception as e:
+            last_err = e
+
     if model is None:
         msg = f"No se pudo cargar el modelo. Probado: {', '.join([str(p) for p in candidate_paths])}"
         if last_err:
             msg += f"\nÚltimo error: {type(last_err).__name__}: {last_err}"
         raise FileNotFoundError(msg)
+
     expected_cols, preproc = None, None
     try:
         if hasattr(model, "named_steps") and "preprocessor" in model.named_steps:
@@ -100,6 +117,7 @@ def load_model_any(path_str: str):
                 expected_cols = list(preproc.feature_names_in_)
     except Exception:
         pass
+
     return model, preproc, expected_cols, loaded_path
 
 try:
