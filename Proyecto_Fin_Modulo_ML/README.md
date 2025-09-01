@@ -26,7 +26,7 @@ Predicción de si el **consumidor disputará** la respuesta recibida por parte d
 Predicción de si la **respuesta de la compañía llegará a tiempo**.  
 
 ### 🔹 Modelo Predictivo 3  
-Predicción del **tiempo de respuesta** de la compañía (clasificación en intervalos).  
+Predicción del **tiempo de procesamiento** de la queja (clasificación en intervalos).  
 
 ---
 
