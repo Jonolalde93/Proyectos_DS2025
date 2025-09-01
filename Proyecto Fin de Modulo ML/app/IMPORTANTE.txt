@@ -1,0 +1,8 @@
+* SE REQUIERE CORRER ANTES EL NOTEBOOK 05 PARA LA GENERACION DE LOS ACRHIVOS .PKL*
+
+
+*Comandos de lanzamiento de la app*
+
+streamlit run app/app.py
+
+streamlit run "Proyecto Fin de Modulo ML/app/app.py"

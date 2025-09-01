@@ -1,7 +1,6 @@
 .venv
 .env
 
-models/
 *.joblib
 *.pkl
 
