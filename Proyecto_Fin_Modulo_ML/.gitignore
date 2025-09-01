@@ -2,7 +2,6 @@
 .env
 
 *.joblib
-*.pkl
 
 __pycache__/
 *.py[cod]
