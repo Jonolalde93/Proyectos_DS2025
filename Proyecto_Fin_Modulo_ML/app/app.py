@@ -32,7 +32,6 @@ def _patch_sklearn_privates():
     except Exception:
         pass
 
-
 APP_DIR = Path(__file__).resolve().parent
 ROOT_DIR = APP_DIR.parent
 MODELS_DIR = ROOT_DIR / "models"
