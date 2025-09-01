@@ -346,4 +346,3 @@ with tab_batch:
                     st.info("No se pudo mostrar dtypes de df_pred.")
     else:
         st.info("Sube un CSV para obtener predicciones.")
-```
