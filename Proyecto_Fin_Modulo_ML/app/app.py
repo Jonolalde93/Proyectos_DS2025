@@ -7,6 +7,22 @@ import streamlit as st
 
 st.set_page_config(page_title="Predicción Modelos Complaints", layout="wide")
 
+def _patch_sklearn_privates():
+    try:
+        import sklearn.utils as _sku
+        try:
+            from sklearn.compose._column_transformer import _get_column_indices as _gci
+            if not hasattr(_sku, "_get_column_indices"):
+                setattr(_sku, "_get_column_indices", _gci)
+        except Exception:
+            pass
+        if not hasattr(_sku, "_RemainderColsList"):
+            class _RemainderColsList(list):
+                pass
+            setattr(_sku, "_RemainderColsList", _RemainderColsList)
+    except Exception:
+        pass
+
 APP_DIR = Path(__file__).resolve().parent
 ROOT_DIR = APP_DIR.parent
 MODELS_DIR = ROOT_DIR / "models"
@@ -23,10 +39,10 @@ LABELS_M3 = {0: "<= 3 días", 1: "4–14 días", 2: "> 14 días"}
 
 EXCLUDE_COLS = {
     "Modelo 01": ["ZIP code"],
-    "Modelo 02": ["ZIP code"],       
+    "Modelo 02": ["ZIP code"],
     "Modelo 03": ["ZIP code"],
 }
-EXCLUDE_ALIASES = ["ZIP Code", "Zip code", "Zip Code"]  
+EXCLUDE_ALIASES = ["ZIP Code", "Zip code", "Zip Code"]
 
 st.sidebar.title("🔧 Configuración")
 modelo_seleccion = st.sidebar.selectbox("Elige el modelo", list(DEFAULT_PATHS.keys()))
@@ -56,6 +72,8 @@ st.subheader(WHAT_IT_PREDICTS[modelo_seleccion])
 
 @st.cache_resource(show_spinner=True)
 def load_model(path: str):
+    if modelo_seleccion.strip().lower() == "modelo 03":
+        _patch_sklearn_privates()
     if not os.path.exists(path):
         raise FileNotFoundError(f"No se encontró el archivo del modelo: {path}")
     model = joblib.load(path)
@@ -83,7 +101,6 @@ with st.expander("🔎 Columnas esperadas por el preprocesador", expanded=False)
         st.info("No se detectaron automáticamente las columnas esperadas.")
 
 def get_preproc_info(preproc):
-    """Obtiene input_cols, cat_cols (aunque 'cat' sea un Pipeline), cat_choices y num_cols."""
     input_cols, cat_cols, cat_choices, num_cols = None, [], {}, []
     if preproc is None:
         return input_cols, cat_cols, cat_choices, num_cols
@@ -171,11 +188,6 @@ def sanitize_for_model(
     excluded: set | None = None,
     num_cols_all: list | None = None
 ) -> pd.DataFrame:
-    """
-    - Si el preprocesador espera columnas concretas (expected_cols), las garantizamos:
-      * columnas excluidas => NaN (para que no influyan, pero cumplan el esquema).
-    - Categóricas a object/NaN; Numéricas a float (to_numeric).
-    """
     import pandas as _pd
     import numpy as _np
 
@@ -202,7 +214,7 @@ def sanitize_for_model(
 
     for c in dfx.columns:
         if c in excluded:
-            continue  
+            continue
         if c in cat_set:
             dfx[c] = dfx[c].astype("object")
             dfx[c] = dfx[c].apply(
@@ -328,3 +340,4 @@ with tab_batch:
                     st.info("No se pudo mostrar dtypes de df_pred.")
     else:
         st.info("Sube un CSV para obtener predicciones.")
+
