@@ -1,4 +1,4 @@
-Y en la app?: import os
+import os
 from pathlib import Path
 import joblib
 import numpy as np
