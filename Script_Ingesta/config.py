@@ -1,0 +1,22 @@
+# config.py
+CCAA_BOUNDING_BOXES = {
+    "Andalucía": {"north": 38.8, "west": -7.5, "south": 36.0, "east": -1.6},
+    "Aragón": {"north": 42.9, "west": -2.2, "south": 40.9, "east": 0.8},
+    "Asturias": {"north": 43.7, "west": -7.3, "south": 43.2, "east": -5.0},
+    "Illes Balears": {"north": 40.1, "west": 1.1, "south": 38.6, "east": 4.4},
+    "Canarias": {"north": 29.5, "west": -18.2, "south": 27.6, "east": -13.3},
+    "Cantabria": {"north": 43.6, "west": -4.7, "south": 43.1, "east": -3.2},
+    "Castilla y León": {"north": 43.2, "west": -7.1, "south": 40.1, "east": -1.9},
+    "Castilla-La Mancha": {"north": 41.4, "west": -5.0, "south": 38.1, "east": -0.8},
+    "Cataluña": {"north": 42.9, "west": 0.1, "south": 40.5, "east": 3.3},
+    "Comunidad Valenciana": {"north": 40.8, "west": -1.6, "south": 38.4, "east": 0.5},
+    "Extremadura": {"north": 41.0, "west": -7.6, "south": 38.0, "east": -4.5},
+    "Galicia": {"north": 43.8, "west": -9.3, "south": 41.8, "east": -6.5},
+    "La Rioja": {"north": 42.6, "west": -3.3, "south": 41.9, "east": -1.8},
+    "Comunidad de Madrid": {"north": 41.1, "west": -4.5, "south": 40.1, "east": -3.1},
+    "Región de Murcia": {"north": 38.9, "west": -2.3, "south": 37.3, "east": -0.6},
+    "Navarra": {"north": 43.4, "west": -2.5, "south": 41.8, "east": -0.7},
+    "País Vasco": {"north": 43.4, "west": -3.4, "south": 42.7, "east": -1.7},
+    "Ceuta": {"north": 35.92, "west": -5.36, "south": 35.85, "east": -5.26},
+    "Melilla": {"north": 35.32, "west": -2.98, "south": 35.25, "east": -2.90},
+}
