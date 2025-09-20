@@ -17,7 +17,7 @@ def usagecost_to_eur_per_kwh(text: str):
     return None
 
 def main():
-    parser = argparse.ArgumentParser(description="Test de normalización de UsageCost en una CCAA")
+    parser = argparse.ArgumentParser(description="Test de normalización de UsageCost en una provincia")
     parser.add_argument("--ccaa", type=str, required=True, help="Nombre exacto de la comunidad (como en config.py)")
     parser.add_argument("--n", type=int, default=10, help="Número de POIs a mostrar")
     args = parser.parse_args()

@@ -1,4 +1,4 @@
-month,ccaa,operator,power_kW,band,usagecost_original,parsed,reason
+month,provincia,operator,power_kW,band,usagecost_original,parsed,reason
 2025-09,Melilla,,11.0,AC,,,no_kwh
 2025-09,Melilla,,22.0,AC,,,no_kwh
 2025-09,Melilla,,22.0,AC,,,empty

@@ -1,11 +1,8 @@
-month,ccaa,operator,power_kW,band,usagecost_original,parsed,reason
+month,provincia,operator,power_kW,band,usagecost_original,parsed,reason
 2025-09,La Rioja,,7.4,AC,,,no_kwh
 2025-09,La Rioja,,7.0,AC,"0,25€/kWh",0.25,ok
-2025-09,La Rioja,,7.4,AC," 0,35€/kWh",0.35,ok
-2025-09,La Rioja,,7.4,AC,20€/charge,,no_kwh
 2025-09,La Rioja,,7.4,AC,"0,25€/kWh",0.25,ok
 2025-09,La Rioja,,3.7,AC,"0,25€/kWh",0.25,ok
-2025-09,La Rioja,,11.0,AC,"0,31€/kWh",0.31,ok
 2025-09,La Rioja,,22.0,AC,,,no_kwh
 2025-09,La Rioja,,11.0,AC,,,no_kwh
 2025-09,La Rioja,,50.0,DC,"0,45€/kWh ",0.45,ok
@@ -80,17 +77,6 @@ month,ccaa,operator,power_kW,band,usagecost_original,parsed,reason
 2025-09,La Rioja,,3.7,AC,,,empty
 2025-09,La Rioja,,50.0,DC,"0,45€/kWh",0.45,ok
 2025-09,La Rioja,,50.0,DC,"0,45€/kWh",0.45,ok
-2025-09,La Rioja,,3.7,AC,"0,5€/hour",,no_kwh
-2025-09,La Rioja,,2.3,AC,"0,5€/hour",,no_kwh
-2025-09,La Rioja,,7.4,AC,"0,26€/kWh",0.26,ok
-2025-09,La Rioja,,11.0,AC,free,,free
-2025-09,La Rioja,,22.0,AC,,,no_kwh
-2025-09,La Rioja,,43.0,DC,"0,47€/kWh ",0.47,ok
-2025-09,La Rioja,,50.0,DC,"0,47€/kWh ",0.47,ok
-2025-09,La Rioja,,50.0,DC,"0,47€/kWh ",0.47,ok
-2025-09,La Rioja,,50.0,DC,"0,45€/kWh DC - 0,36€/kWh AC",0.45,ok
-2025-09,La Rioja,,22.0,AC,"0,45€/kWh DC - 0,36€/kWh AC",0.45,ok
-2025-09,La Rioja,,50.0,DC,"0,45€/kWh DC - 0,36€/kWh AC",0.45,ok
 2025-09,La Rioja,,22.0,AC,"0,35€/kWh",0.35,ok
 2025-09,La Rioja,,22.0,AC,"0,35€/kWh",0.35,ok
 2025-09,La Rioja,,22.0,AC,"0,47€/kWh",0.47,ok
@@ -119,6 +105,7 @@ month,ccaa,operator,power_kW,band,usagecost_original,parsed,reason
 2025-09,La Rioja,,11.0,AC,0.35€/kWh ,0.35,ok
 2025-09,La Rioja,,11.0,AC,,,no_kwh
 2025-09,La Rioja,,11.0,AC,,,no_kwh
+2025-09,La Rioja,,22.0,AC,free,,free
 2025-09,La Rioja,,22.0,AC,,,no_kwh
 2025-09,La Rioja,,50.0,DC,0.47€/kWh ,0.47,ok
 2025-09,La Rioja,,50.0,DC,0.47€/kWh ,0.47,ok
@@ -145,11 +132,52 @@ month,ccaa,operator,power_kW,band,usagecost_original,parsed,reason
 2025-09,La Rioja,,360.0,DC,"0,55€/kWh",0.55,ok
 2025-09,La Rioja,,22.0,AC,,,no_kwh
 2025-09,La Rioja,,2.3,AC,,,no_kwh
+2025-09,La Rioja,,7.4,AC,"0,35€/kWh",0.35,ok
 2025-09,La Rioja,,22.0,AC,,,empty
 2025-09,La Rioja,,22.0,AC,,,empty
+2025-09,La Rioja,,11.0,AC,,,empty
+2025-09,La Rioja,,3.7,AC,,,empty
+2025-09,La Rioja,,50.0,DC,,,no_kwh
+2025-09,La Rioja,,43.0,DC,,,no_kwh
+2025-09,La Rioja,,100.0,DC,"0,55€/kWh",0.55,ok
+2025-09,La Rioja,,80.0,DC,"0,55€/kWh",0.55,ok
+2025-09,La Rioja,,2.3,AC,"0,50€/hora",,no_kwh
+2025-09,La Rioja,,7.4,AC,"0,50€/hora",,no_kwh
 2025-09,La Rioja,,11.0,AC,,,no_kwh
+2025-09,La Rioja,,180.0,DC,"0,60€/kWh",0.6,ok
+2025-09,La Rioja,,120.0,DC,"0,54€/kWh",0.54,ok
+2025-09,La Rioja,,50.0,DC,0.47€/kWh ,0.47,ok
+2025-09,La Rioja,,50.0,DC,0.47€/kWh ,0.47,ok
+2025-09,La Rioja,,43.0,DC,0.47€/kWh ,0.47,ok
+2025-09,La Rioja,,180.0,DC,"0,55€/kWh DC  - 0,39€/kWh AC  ",0.55,ok
+2025-09,La Rioja,,180.0,DC,"0,55€/kWh DC  - 0,39€/kWh AC  ",0.55,ok
+2025-09,La Rioja,,180.0,DC,"0,55€/kWh DC  - 0,39€/kWh AC  ",0.55,ok
+2025-09,La Rioja,,180.0,DC,"0,55€/kWh DC  - 0,39€/kWh AC  ",0.55,ok
+2025-09,La Rioja,,180.0,DC,"0,55€/kWh DC  - 0,39€/kWh AC  ",0.55,ok
+2025-09,La Rioja,,180.0,DC,"0,55€/kWh DC  - 0,39€/kWh AC  ",0.55,ok
+2025-09,La Rioja,,22.0,AC,"0,55€/kWh DC  - 0,39€/kWh AC  ",0.55,ok
+2025-09,La Rioja,,22.0,AC,"0,25€/kWh",0.25,ok
+2025-09,La Rioja,,7.4,AC,,,no_kwh
+2025-09,La Rioja,,11.0,AC,,,no_kwh
+2025-09,La Rioja,,150.0,DC,"0,55€/kWh >60kW - 0,45€/kWh DC - 0,39€/kWh AC ",0.55,ok
+2025-09,La Rioja,,50.0,DC,"0,39€/kWh DC - 0,29€/kWh AC",0.39,ok
+2025-09,La Rioja,,43.0,DC,"0,39€/kWh DC - 0,29€/kWh AC",0.39,ok
+2025-09,La Rioja,,50.0,DC,"0,39€/kWh DC - 0,29€/kWh AC",0.39,ok
+2025-09,La Rioja,,22.0,AC,"0,26€/kWh",0.26,ok
 2025-09,La Rioja,,50.0,DC,,,no_kwh
 2025-09,La Rioja,,22.0,AC,,,no_kwh
+2025-09,La Rioja,,7.4,AC,0.40€/kWh,0.4,ok
+2025-09,La Rioja,,22.0,AC,0.40€/kWh,0.4,ok
+2025-09,La Rioja,,50.0,DC,,,no_kwh
+2025-09,La Rioja,,50.0,DC,,,no_kwh
+2025-09,La Rioja,,43.0,DC,,,no_kwh
+2025-09,La Rioja,,50.0,DC,"0,42€/kWh 50 kW - 0,38€/kWh AC",0.42,ok
+2025-09,La Rioja,,50.0,DC,"0,42€/kWh 50 kW - 0,38€/kWh AC",0.42,ok
+2025-09,La Rioja,,22.0,AC,"0,42€/kWh 50 kW - 0,38€/kWh AC",0.42,ok
+2025-09,La Rioja,,100.0,DC,"0,55€/kWh",0.55,ok
+2025-09,La Rioja,,80.0,DC,"0,55€/kWh",0.55,ok
+2025-09,La Rioja,,4.0,AC,,,no_kwh
+2025-09,La Rioja,,2.3,AC,,,no_kwh
 2025-09,La Rioja,,22.0,AC,,,no_kwh
 2025-09,La Rioja,,11.0,AC,,,no_kwh
 2025-09,La Rioja,,2.3,AC,,,no_kwh

@@ -1,4 +1,4 @@
-month,ccaa,operator,power_kW,band,usagecost_original,parsed,reason
+month,provincia,operator,power_kW,band,usagecost_original,parsed,reason
 2025-09,Illes Balears,,22.0,AC,Free,,free
 2025-09,Illes Balears,,3.7,AC,Free,,free
 2025-09,Illes Balears,,22.0,AC,,,no_kwh
